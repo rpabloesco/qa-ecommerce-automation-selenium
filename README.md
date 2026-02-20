@@ -1,6 +1,6 @@
 # E-Commerce Automation Suite — DemoBlaze  
 ### Automatización E2E con Java + Selenium WebDriver + TestNG (POM)
-[![🚀 Test Automation CI/CD](https://github.com/rpabloesco/qa-ecommerce-automation-selenium-java/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium-java/actions/workflows/ci.yml)
+[![🚀 Test Automation CI/CD](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml)
 
 <p align="left">
   <img src="https://img.shields.io/badge/Language-Java-blue" alt="Java" />
