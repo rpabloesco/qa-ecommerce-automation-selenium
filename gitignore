@@ -1,0 +1,258 @@
+# ============================================
+# Java Selenium Maven Test Automation
+# Portfolio Project - Optimized for GitHub
+# ============================================
+
+# ============================================
+# Maven Build
+# ============================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Maven wrapper (uncomment to exclude)
+.mvn/
+mvnw
+mvnw.cmd
+
+# ============================================
+# Test Reports & Results (Generated Files)
+# ============================================
+test-output/
+allure-results/
+allure-report/
+surefire-reports/
+failsafe-reports/
+ExtentReports/
+*.xml.bak
+
+# Test screenshots (temporary/generated during test execution)
+test-output/screenshots/
+target/screenshots/
+temp-screenshots/
+
+# Logs
+*.log
+logs/
+
+# ============================================
+# IDE - IntelliJ IDEA
+# ============================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+# ============================================
+# IDE - Eclipse
+# ============================================
+.classpath
+.project
+.settings/
+bin/
+.metadata/
+.recommenders/
+*.launch
+.factorypath
+
+# ============================================
+# IDE - VS Code
+# ============================================
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ============================================
+# IDE - NetBeans
+# ============================================
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ============================================
+# Operating System
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ============================================
+# Compiled Files
+# ============================================
+*.class
+
+# JAR files (except Maven wrapper)
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ============================================
+# Package Files
+# ============================================
+*.7z
+*.dmg
+*.gz
+*.iso
+*.tar
+*.tgz
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~.nib
+*.bak
+*.cache
+
+# ============================================
+# Environment & Security
+# ============================================
+# Block files with REAL secrets/credentials
+.env
+.env.local
+.env.*.local
+*.properties.local
+secrets.properties
+credentials.json
+database.properties
+apikeys.properties
+
+# BUT ALLOW public test configs (saucedemo.com has public credentials)
+# These are safe to commit for portfolio projects
+!config.properties
+!config.example.properties
+!*.template.properties
+!src/main/resources/config.properties
+!src/main/resources/environments/*.properties
+!src/test/resources/*.properties
+
+# Note: For production projects with real credentials, uncomment below:
+# src/main/resources/environments/*.properties
+# !src/main/resources/environments/*.example.properties
+
+# ============================================
+# Selenium & WebDriver
+# ============================================
+# Driver executables (managed by WebDriverManager)
+chromedriver
+chromedriver.exe
+geckodriver
+geckodriver.exe
+msedgedriver.exe
+IEDriverServer.exe
+operadriver
+operadriver.exe
+safaridriver
+
+# ============================================
+# IMPORTANT: Allow Documentation Assets
+# ============================================
+# Allow screenshot documentation for README/portfolio
+!docs/**
+!docs/screenshots/**
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.gif
+!docs/**/*.md
+
+# Allow project screenshots for documentation
+!screenshots/**/*.png
+!screenshots/**/*.jpg
+!screenshots/**/*.gif
+
+# Allow GitHub workflows and documentation
+!.github/**
+!README.md
+!LICENSE
+!CONTRIBUTING.md
+!CHANGELOG.md
+
+# Allow test configuration files
+!src/test/resources/testng.xml
+!src/test/resources/testng-*.xml
+
+# ============================================
+# Node (if using any JS tools)
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ============================================
+# Gradle (if migrating from Maven)
+# ============================================
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# ============================================
+# Coverage Reports
+# ============================================
+*.exec
+jacoco.exec
+coverage/
+.nyc_output/
+
+# ============================================
+# Performance Testing
+# ============================================
+jmeter.log
+results/
+
+# ============================================
+# Database
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================
+# Misc
+# ============================================
+*.swp
+*.swo
+.project
+.settings
+.classpath
+.factorypath

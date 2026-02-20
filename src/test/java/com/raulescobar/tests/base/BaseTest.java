@@ -1,24 +1,30 @@
 package com.raulescobar.tests.base;
 
 import org.openqa.selenium.WebDriver;
-import com.raulescobar.config.ConfigReader;
-import com.raulescobar.driver.DriverFactory;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class BaseTest {
-    protected WebDriver driver;
-    protected ConfigReader config;
-
-    @BeforeTest
+public class BaseTest {
+    public WebDriver driver;
+    
+    @BeforeMethod
     public void setUp() {
-        config = new ConfigReader();
-        DriverFactory.initializeDriver(config);
-        driver = DriverFactory.getDriver();
+        System.out.println("=== SETUP STARTED ===");
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
+        System.out.println("=== DRIVER CREATED ===");
     }
-
-    @AfterTest
+    
+    @AfterMethod
     public void tearDown() {
-        DriverFactory.quitDriver();
+        System.out.println("=== TEARDOWN STARTED ===");
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

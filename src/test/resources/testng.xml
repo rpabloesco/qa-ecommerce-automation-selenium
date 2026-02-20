@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-    <suite name="All Test Suite">
-       <test name="Sanity Test" groups="smoke">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="E-Commerce Test Automation Suite" parallel="false" verbose="1">
+    
+    <test name="All Tests">
         <classes>
-            <class name="com.raulescobar.tests.smoke.SanityTest"/>
+            <class name="com.raulescobar.tests.smoke.LoginTest"/>
+            <!-- Agrega más clases aquí conforme crezca el proyecto -->
         </classes>
-     </test>
-    </suite>
+    </test>
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="com.raulescobar.listeners.AllureListener"/>
+    </listeners>
+    
+</suite>

@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="3" passed="0" failed="3" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-19T21:50:18 CST" name="All Test Suite" finished-at="2026-02-19T21:50:26 CST" duration-ms="7917">
+  <suite started-at="2026-02-20T17:07:03 CST" name="E-Commerce Test Automation Suite" finished-at="2026-02-20T17:07:12 CST" duration-ms="8558">
     <groups>
+      <group name="negative">
+        <method signature="LoginTest.testInvalidLogin()[pri:2, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testInvalidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
+      </group> <!-- negative -->
+      <group name="regression">
+        <method signature="LoginTest.testValidLogin()[pri:1, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testValidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
+      </group> <!-- regression -->
       <group name="smoke">
-        <method signature="SanityTest.smoke_openLoginPage()[pri:0, instance:smoke.SanityTest@7c0c77c7]" name="smoke_openLoginPage" class="smoke.SanityTest"/>
+        <method signature="LoginTest.testValidLogin()[pri:1, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testValidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
+        <method signature="LoginTest.testInvalidLogin()[pri:2, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testInvalidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
+        <method signature="LoginTest.testLoginPageLoad()[pri:3, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testLoginPageLoad" class="com.raulescobar.tests.smoke.LoginTest"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2026-02-19T21:50:18 CST" name="Sanity Test" finished-at="2026-02-19T21:50:26 CST" duration-ms="7917">
-      <class name="smoke.SanityTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:smoke.SanityTest@7c0c77c7]" started-at="2026-02-19T21:50:18 CST" name="setUp" finished-at="2026-02-19T21:50:23 CST" duration-ms="5261" status="PASS">
+    <test started-at="2026-02-20T17:07:03 CST" name="All Tests" finished-at="2026-02-20T17:07:12 CST" duration-ms="8558">
+      <class name="com.raulescobar.tests.smoke.LoginTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:03 CST" name="setUp" finished-at="2026-02-20T17:07:05 CST" duration-ms="2112" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="smoke_openLoginPage()[pri:0, instance:smoke.SanityTest@7c0c77c7]" started-at="2026-02-19T21:50:23 CST" name="smoke_openLoginPage" finished-at="2026-02-19T21:50:25 CST" duration-ms="1703" status="FAIL">
-          <exception class="java.lang.AssertionError">
+        <test-method signature="testValidLogin()[pri:1, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:05 CST" name="testValidLogin" finished-at="2026-02-20T17:07:06 CST" duration-ms="870" status="FAIL">
+          <exception class="java.lang.NullPointerException">
             <message>
-              <![CDATA[El título no contiene 'Swag Labs' expected [true] but found [false]]]>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: El título no contiene 'Swag Labs' expected [true] but found [false]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1590)
-at org.testng.Assert.assertTrue(Assert.java:57)
-at smoke.SanityTest.smoke_openLoginPage(SanityTest.java:17)
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null
+at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:367)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:353)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:350)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:207)
+at com.raulescobar.pages.LoginPom.enterUsername(LoginPom.java:35)
+at com.raulescobar.pages.LoginPom.login(LoginPom.java:57)
+at com.raulescobar.tests.smoke.LoginTest.testValidLogin(LoginTest.java:49)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -57,15 +68,130 @@ at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- smoke_openLoginPage -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:smoke.SanityTest@7c0c77c7]" started-at="2026-02-19T21:50:25 CST" name="tearDown" finished-at="2026-02-19T21:50:26 CST" duration-ms="827" status="PASS">
+        </test-method> <!-- testValidLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:06 CST" name="tearDown" finished-at="2026-02-20T17:07:07 CST" duration-ms="466" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- smoke.SanityTest -->
-    </test> <!-- Sanity Test -->
-  </suite> <!-- All Test Suite -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:07 CST" name="setUp" finished-at="2026-02-20T17:07:08 CST" duration-ms="924" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testInvalidLogin()[pri:2, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:08 CST" name="testInvalidLogin" finished-at="2026-02-20T17:07:09 CST" duration-ms="941" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null
+at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:367)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:353)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:350)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:207)
+at com.raulescobar.pages.LoginPom.enterUsername(LoginPom.java:35)
+at com.raulescobar.pages.LoginPom.login(LoginPom.java:57)
+at com.raulescobar.tests.smoke.LoginTest.testInvalidLogin(LoginTest.java:68)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInvalidLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:09 CST" name="tearDown" finished-at="2026-02-20T17:07:09 CST" duration-ms="402" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:09 CST" name="setUp" finished-at="2026-02-20T17:07:10 CST" duration-ms="1228" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testLoginPageLoad()[pri:3, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:10 CST" name="testLoginPageLoad" finished-at="2026-02-20T17:07:11 CST" duration-ms="985" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null
+at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:367)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:353)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:350)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:207)
+at com.raulescobar.pages.LoginPom.isLoginButtonEnabled(LoginPom.java:79)
+at com.raulescobar.tests.smoke.LoginTest.testLoginPageLoad(LoginTest.java:92)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginPageLoad -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:11 CST" name="tearDown" finished-at="2026-02-20T17:07:12 CST" duration-ms="272" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.raulescobar.tests.smoke.LoginTest -->
+    </test> <!-- All Tests -->
+  </suite> <!-- E-Commerce Test Automation Suite -->
 </testng-results>
