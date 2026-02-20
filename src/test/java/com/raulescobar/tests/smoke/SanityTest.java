@@ -1,11 +1,11 @@
-package smoke;
+package com.raulescobar.tests.smoke;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.raulescobar.pages.LoginPom;
 
-import base.BaseTest;
+import com.raulescobar.tests.base.BaseTest;
 
 public class SanityTest extends BaseTest {
     

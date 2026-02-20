@@ -1,4 +1,4 @@
-package base;
+package com.raulescobar.tests.base;
 
 import org.openqa.selenium.WebDriver;
 import com.raulescobar.config.ConfigReader;
