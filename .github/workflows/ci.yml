@@ -1,0 +1,83 @@
+name: 🚀 Test Automation CI/CD
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  schedule:
+    - cron: '0 9 * * 1'  # Ejecutar cada Lunes a las 9 AM UTC
+  workflow_dispatch:  # Permite ejecución manual
+
+jobs:
+  test:
+    name: Run Selenium Tests
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        browser: [chrome]  # Puedes agregar firefox, edge después
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: ☕ Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'maven'
+        
+    - name: 🔧 Setup Chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
+        
+    - name: 🔍 Verify Chrome Installation
+      run: |
+        which google-chrome
+        google-chrome --version
+        
+    - name: 📦 Install Dependencies
+      run: mvn clean install -DskipTests
+      
+    - name: 🧪 Run Tests
+      run: mvn test -Dbrowser=${{ matrix.browser }} -Dheadless=true
+      continue-on-error: true
+      
+    - name: 📊 Generate Surefire Report
+      if: always()
+      run: mvn surefire-report:report
+      
+    - name: 📤 Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.browser }}
+        path: |
+          target/surefire-reports/
+          target/site/
+        retention-days: 30
+        
+    - name: 📸 Upload Screenshots on Failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: failure-screenshots-${{ matrix.browser }}
+        path: screenshots/
+        retention-days: 7
+        
+    - name: 📋 Test Summary
+      if: always()
+      run: |
+        echo "## Test Execution Summary 📊" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Browser:** ${{ matrix.browser }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        if [ -f target/surefire-reports/testng-results.xml ]; then
+          echo "Test results generated successfully ✅" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "Test results not found ⚠️" >> $GITHUB_STEP_SUMMARY
+        fi
