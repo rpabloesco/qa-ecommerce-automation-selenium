@@ -416,3 +416,31 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Test Reports
+target/
+test-output/
+allure-results/
+allure-report/
+surefire-reports/
+*.html
+*.css
+*.js
+screenshots/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# OS
+.DS_Store
+Thumbs.db
