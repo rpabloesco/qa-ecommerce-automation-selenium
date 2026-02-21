@@ -6,8 +6,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import com.raulescobar.pages.LoginPom;
-import com.raulescobar.pages.LoginPom;
-import com.raulescobar.pages.SignUpPom;
 import com.raulescobar.tests.base.BaseTest;
 import io.qameta.allure.*;
 import java.io.ByteArrayInputStream;
