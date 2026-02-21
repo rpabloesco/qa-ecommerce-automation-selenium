@@ -3,16 +3,18 @@ package com.raulescobar.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 import java.time.Duration;
 
-public class LoginPom extends BasePage {
+public class LoginPom {
 
+    private WebDriver driver;
     private WebDriverWait wait;
 
+    // Locators correctos para saucedemo.com
     @FindBy(id = "user-name")
     private WebElement usernameInput;
 
@@ -26,8 +28,9 @@ public class LoginPom extends BasePage {
     private WebElement errorMessage;
 
     public LoginPom(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver, this);
     }
 
     @Step("Enter username: {username}")

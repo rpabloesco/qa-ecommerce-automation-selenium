@@ -1,58 +1,47 @@
 package com.raulescobar.tests.smoke;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import com.raulescobar.pages.LoginPom;
+import com.raulescobar.tests.base.BaseTest;
+import com.raulescobar.utils.WaitHelper;
 import io.qameta.allure.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.ByteArrayInputStream;
 
 @Epic("Authentication Module")
 @Feature("Login Functionality")
-public class LoginTest {
-    
-    private WebDriver driver;
-    
-    @BeforeMethod
-    public void setUp() {
-        System.out.println("=== SETUP STARTED ===");
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-        System.out.println("=== DRIVER CREATED: " + driver + " ===");
-    }
-    
-    @AfterMethod
-    public void tearDown() {
-        System.out.println("=== TEARDOWN STARTED ===");
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+public class LoginTest extends BaseTest {
     
     @Test(priority = 1, groups = {"smoke", "regression"})
     @Severity(SeverityLevel.BLOCKER)
     @Description("Verify user can successfully login with valid credentials")
     @Story("User Login - Happy Path")
     public void testValidLogin() {
-        driver.get("https://www.saucedemo.com/");
+        // Navigate to application
+        String baseUrl = config.getEnv("baseUrl");
+        driver.get(baseUrl);
         
+        // Initialize helpers
+        WaitHelper waitHelper = new WaitHelper(driver);
         LoginPom loginPage = new LoginPom(driver);
-        loginPage.login("standard_user", "secret_sauce");
         
+        // Login with valid credentials
+        String username = config.getEnv("username");
+        String password = config.getEnv("password");
+        loginPage.login(username, password);
+        
+        // Wait for successful navigation (PROFESIONAL)
+        waitHelper.waitForUrlContains("inventory.html");
+        
+        // Verify successful login
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("inventory.html"), 
-            "User should be on inventory page after login");
+            "User should be on inventory page after login. Current URL: " + currentUrl);
         
-        Allure.addAttachment("Login Success", 
+        // Capture screenshot
+        Allure.addAttachment("Login Success Page", 
             new ByteArrayInputStream(((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES)));
     }
@@ -62,17 +51,24 @@ public class LoginTest {
     @Description("Verify error message is displayed with invalid credentials")
     @Story("User Login - Negative Scenario")
     public void testInvalidLogin() {
-        driver.get("https://www.saucedemo.com/");
+        // Navigate to application
+        String baseUrl = config.getEnv("baseUrl");
+        driver.get(baseUrl);
         
+        // Login with invalid credentials
         LoginPom loginPage = new LoginPom(driver);
         loginPage.login("invalid_user", "wrong_password");
         
-        try { Thread.sleep(1000); } catch (InterruptedException e) {}
-        
+        // Verify error message (el wait ya está en LoginPom.isErrorMessageDisplayed)
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(),
             "Error message should be visible");
         
-        Allure.addAttachment("Login Error", 
+        String errorText = loginPage.getErrorMessage();
+        Assert.assertTrue(errorText.contains("Epic sadface"), 
+            "Error message should contain 'Epic sadface'. Actual: " + errorText);
+        
+        // Capture screenshot
+        Allure.addAttachment("Login Error Message", 
             new ByteArrayInputStream(((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES)));
     }
@@ -82,14 +78,30 @@ public class LoginTest {
     @Description("Verify login page loads correctly")
     @Story("Page Load Validation")
     public void testLoginPageLoad() {
-        driver.get("https://www.saucedemo.com/");
+        // Navigate to application
+        String baseUrl = config.getEnv("baseUrl");
+        driver.get(baseUrl);
         
+        // Initialize helpers
+        WaitHelper waitHelper = new WaitHelper(driver);
+        
+        // Wait for page to load completely 
+        waitHelper.waitForPageLoad();
+        waitHelper.waitForTitleContains("Swag Labs");
+        
+        // Verify page title
         String title = driver.getTitle();
         Assert.assertTrue(title.contains("Swag Labs"), 
-            "Page title should contain 'Swag Labs'");
+            "Page title should contain 'Swag Labs'. Actual: " + title);
         
+        // Verify login button state
         LoginPom loginPage = new LoginPom(driver);
         Assert.assertTrue(loginPage.isLoginButtonEnabled(),
             "Login button should be enabled on page load");
+        
+        // Capture screenshot
+        Allure.addAttachment("Login Page Loaded", 
+            new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES)));
     }
 }
