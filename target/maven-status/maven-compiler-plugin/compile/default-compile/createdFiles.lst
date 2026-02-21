@@ -1,3 +1,4 @@
+com\raulescobar\utils\WaitHelper.class
 com\raulescobar\driver\DriverFactory.class
 com\raulescobar\config\ConfigReader.class
 com\raulescobar\core\BasePage.class

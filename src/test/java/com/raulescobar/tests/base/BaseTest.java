@@ -1,30 +1,41 @@
 package com.raulescobar.tests.base;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.raulescobar.config.ConfigReader;
+import com.raulescobar.driver.DriverFactory;
 
+/**
+ * Base test class for all test classes
+ * Handles WebDriver setup and teardown
+ */
 public class BaseTest {
-    public WebDriver driver;
     
+    public WebDriver driver;
+    protected ConfigReader config;
+
     @BeforeMethod
     public void setUp() {
-        System.out.println("=== SETUP STARTED ===");
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-        System.out.println("=== DRIVER CREATED ===");
+        System.out.println("=== TEST SETUP STARTED ===");
+        
+        // Initialize configuration
+        config = new ConfigReader();
+        
+        // Initialize WebDriver using DriverFactory
+        DriverFactory.initializeDriver(config);
+        driver = DriverFactory.getDriver();
+        
+        System.out.println("=== DRIVER INITIALIZED SUCCESSFULLY ===");
     }
-    
+
     @AfterMethod
     public void tearDown() {
-        System.out.println("=== TEARDOWN STARTED ===");
-        if (driver != null) {
-            driver.quit();
-        }
+        System.out.println("=== TEST TEARDOWN STARTED ===");
+        
+        // Quit driver using DriverFactory
+        DriverFactory.quitDriver();
+        
+        System.out.println("=== DRIVER CLOSED SUCCESSFULLY ===");
     }
 }
