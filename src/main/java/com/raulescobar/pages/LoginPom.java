@@ -83,7 +83,7 @@ public class LoginPom extends BasePage {
         enterPassword(password);
         clickLoginButton();
         
-        // Small wait for potential alert
+        //For alert
         try {
             Thread.sleep(500);
             // Check if there's an alert (wrong credentials)
