@@ -1,197 +1,559 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="0" failed="3" skipped="0">
+<testng-results ignored="0" total="26" passed="26" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-20T17:07:03 CST" name="E-Commerce Test Automation Suite" finished-at="2026-02-20T17:07:12 CST" duration-ms="8558">
+  <suite started-at="2026-02-23T18:14:52 CST" name="Surefire suite" finished-at="2026-02-23T18:17:32 CST" duration-ms="159384">
     <groups>
-      <group name="negative">
-        <method signature="LoginTest.testInvalidLogin()[pri:2, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testInvalidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
-      </group> <!-- negative -->
       <group name="regression">
-        <method signature="LoginTest.testValidLogin()[pri:1, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testValidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
+        <method signature="NavigationTest.testSpecificPhoneIsDisplayed()[pri:12, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificPhoneIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificLaptopIsDisplayed()[pri:22, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificLaptopIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificMonitorIsDisplayed()[pri:32, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificMonitorIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testProductDetailPageHasContent()[pri:41, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testProductDetailPageHasContent" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testCarouselNextButtonWorks()[pri:50, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testCarouselNextButtonWorks" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testCarouselPreviousButtonWorks()[pri:51, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testCarouselPreviousButtonWorks" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testGenericCategoryMethod(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testGenericCategoryMethod" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testGenericCategoryMethodDataDriven(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testGenericCategoryMethodDataDriven" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testCategoryHasExpectedProducts(java.lang.String)[pri:61, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testCategoryHasExpectedProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
       </group> <!-- regression -->
       <group name="smoke">
-        <method signature="LoginTest.testValidLogin()[pri:1, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testValidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
-        <method signature="LoginTest.testInvalidLogin()[pri:2, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testInvalidLogin" class="com.raulescobar.tests.smoke.LoginTest"/>
-        <method signature="LoginTest.testLoginPageLoad()[pri:3, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" name="testLoginPageLoad" class="com.raulescobar.tests.smoke.LoginTest"/>
+        <method signature="NavigationTest.testHomePomLoads()[pri:1, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testHomePomLoads" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testPageTitleIsCorrect()[pri:2, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPageTitleIsCorrect" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testHomePageDisplaysMinimumProducts()[pri:3, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testHomePageDisplaysMinimumProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testHomePomDisplaysProducts()[pri:3, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testHomePomDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testPhonesCategoryIsClickable()[pri:10, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPhonesCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testPhonesCategoryDisplaysProducts()[pri:11, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPhonesCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testLaptopsCategoryIsClickable()[pri:20, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testLaptopsCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testLaptopsCategoryDisplaysProducts()[pri:21, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testLaptopsCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testMonitorsCategoryIsClickable()[pri:30, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testMonitorsCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testMonitorsCategoryDisplaysProducts()[pri:31, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testMonitorsCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testProductClickNavigatesToDetail()[pri:40, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testProductClickNavigatesToDetail" class="com.raulescobar.tests.smoke.NavigationTest"/>
       </group> <!-- smoke -->
+      <group name="phones">
+        <method signature="NavigationTest.testPhonesCategoryIsClickable()[pri:10, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPhonesCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testPhonesCategoryDisplaysProducts()[pri:11, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPhonesCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificPhoneIsDisplayed()[pri:12, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificPhoneIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- phones -->
+      <group name="categories">
+        <method signature="NavigationTest.testPhonesCategoryIsClickable()[pri:10, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPhonesCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testPhonesCategoryDisplaysProducts()[pri:11, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPhonesCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificPhoneIsDisplayed()[pri:12, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificPhoneIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testLaptopsCategoryIsClickable()[pri:20, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testLaptopsCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testLaptopsCategoryDisplaysProducts()[pri:21, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testLaptopsCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificLaptopIsDisplayed()[pri:22, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificLaptopIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testMonitorsCategoryIsClickable()[pri:30, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testMonitorsCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testMonitorsCategoryDisplaysProducts()[pri:31, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testMonitorsCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificMonitorIsDisplayed()[pri:32, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificMonitorIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testGenericCategoryMethod(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testGenericCategoryMethod" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testGenericCategoryMethodDataDriven(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testGenericCategoryMethodDataDriven" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testCategoryHasExpectedProducts(java.lang.String)[pri:61, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testCategoryHasExpectedProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- categories -->
+      <group name="carousel">
+        <method signature="NavigationTest.testCarouselNextButtonWorks()[pri:50, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testCarouselNextButtonWorks" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testCarouselPreviousButtonWorks()[pri:51, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testCarouselPreviousButtonWorks" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- carousel -->
+      <group name="laptops">
+        <method signature="NavigationTest.testLaptopsCategoryIsClickable()[pri:20, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testLaptopsCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testLaptopsCategoryDisplaysProducts()[pri:21, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testLaptopsCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificLaptopIsDisplayed()[pri:22, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificLaptopIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- laptops -->
+      <group name="validation">
+        <method signature="NavigationTest.testHomePomLoads()[pri:1, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testHomePomLoads" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testPageTitleIsCorrect()[pri:2, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testPageTitleIsCorrect" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testHomePageDisplaysMinimumProducts()[pri:3, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testHomePageDisplaysMinimumProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testHomePomDisplaysProducts()[pri:3, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testHomePomDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- validation -->
+      <group name="products">
+        <method signature="NavigationTest.testProductClickNavigatesToDetail()[pri:40, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testProductClickNavigatesToDetail" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testProductDetailPageHasContent()[pri:41, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testProductDetailPageHasContent" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- products -->
+      <group name="monitors">
+        <method signature="NavigationTest.testMonitorsCategoryIsClickable()[pri:30, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testMonitorsCategoryIsClickable" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testMonitorsCategoryDisplaysProducts()[pri:31, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testMonitorsCategoryDisplaysProducts" class="com.raulescobar.tests.smoke.NavigationTest"/>
+        <method signature="NavigationTest.testSpecificMonitorIsDisplayed()[pri:32, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" name="testSpecificMonitorIsDisplayed" class="com.raulescobar.tests.smoke.NavigationTest"/>
+      </group> <!-- monitors -->
     </groups>
-    <test started-at="2026-02-20T17:07:03 CST" name="All Tests" finished-at="2026-02-20T17:07:12 CST" duration-ms="8558">
-      <class name="com.raulescobar.tests.smoke.LoginTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:03 CST" name="setUp" finished-at="2026-02-20T17:07:05 CST" duration-ms="2112" status="PASS">
+    <test started-at="2026-02-23T18:14:52 CST" name="Surefire test" finished-at="2026-02-23T18:17:32 CST" duration-ms="159384">
+      <class name="com.raulescobar.tests.smoke.NavigationTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:14:52 CST" name="setUp" finished-at="2026-02-23T18:14:59 CST" duration-ms="7186" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testValidLogin()[pri:1, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:05 CST" name="testValidLogin" finished-at="2026-02-20T17:07:06 CST" duration-ms="870" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:367)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:353)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:350)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:207)
-at com.raulescobar.pages.LoginPom.enterUsername(LoginPom.java:35)
-at com.raulescobar.pages.LoginPom.login(LoginPom.java:57)
-at com.raulescobar.tests.smoke.LoginTest.testValidLogin(LoginTest.java:49)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-at org.testng.TestRunner.privateRun(TestRunner.java:744)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:00 CST" name="navigateToHome" finished-at="2026-02-23T18:15:03 CST" duration-ms="3372" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testValidLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:06 CST" name="tearDown" finished-at="2026-02-20T17:07:07 CST" duration-ms="466" status="PASS">
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testHomePomLoads()[pri:1, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:03 CST" name="testHomePomLoads" finished-at="2026-02-23T18:15:04 CST" duration-ms="464" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHomePomLoads -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:04 CST" name="tearDown" finished-at="2026-02-23T18:15:04 CST" duration-ms="371" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:07 CST" name="setUp" finished-at="2026-02-20T17:07:08 CST" duration-ms="924" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:04 CST" name="setUp" finished-at="2026-02-23T18:15:05 CST" duration-ms="880" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testInvalidLogin()[pri:2, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:08 CST" name="testInvalidLogin" finished-at="2026-02-20T17:07:09 CST" duration-ms="941" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:367)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:353)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:350)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:207)
-at com.raulescobar.pages.LoginPom.enterUsername(LoginPom.java:35)
-at com.raulescobar.pages.LoginPom.login(LoginPom.java:57)
-at com.raulescobar.tests.smoke.LoginTest.testInvalidLogin(LoginTest.java:68)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-at org.testng.TestRunner.privateRun(TestRunner.java:744)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:05 CST" name="navigateToHome" finished-at="2026-02-23T18:15:07 CST" duration-ms="2288" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testInvalidLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:09 CST" name="tearDown" finished-at="2026-02-20T17:07:09 CST" duration-ms="402" status="PASS">
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testPageTitleIsCorrect()[pri:2, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:07 CST" name="testPageTitleIsCorrect" finished-at="2026-02-23T18:15:07 CST" duration-ms="20" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPageTitleIsCorrect -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:07 CST" name="tearDown" finished-at="2026-02-23T18:15:07 CST" duration-ms="321" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:09 CST" name="setUp" finished-at="2026-02-20T17:07:10 CST" duration-ms="1228" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:07 CST" name="setUp" finished-at="2026-02-23T18:15:08 CST" duration-ms="996" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLoginPageLoad()[pri:3, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:10 CST" name="testLoginPageLoad" finished-at="2026-02-20T17:07:11 CST" duration-ms="985" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.isDisplayed()" because "element" is null
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:367)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:353)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:350)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:207)
-at com.raulescobar.pages.LoginPom.isLoginButtonEnabled(LoginPom.java:79)
-at com.raulescobar.tests.smoke.LoginTest.testLoginPageLoad(LoginTest.java:92)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-at org.testng.TestRunner.privateRun(TestRunner.java:744)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:08 CST" name="navigateToHome" finished-at="2026-02-23T18:15:11 CST" duration-ms="2261" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLoginPageLoad -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.LoginTest@82de64a]" started-at="2026-02-20T17:07:11 CST" name="tearDown" finished-at="2026-02-20T17:07:12 CST" duration-ms="272" status="PASS">
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testHomePageDisplaysMinimumProducts()[pri:3, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:11 CST" name="testHomePageDisplaysMinimumProducts" finished-at="2026-02-23T18:15:11 CST" duration-ms="621" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHomePageDisplaysMinimumProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:11 CST" name="tearDown" finished-at="2026-02-23T18:15:12 CST" duration-ms="309" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.raulescobar.tests.smoke.LoginTest -->
-    </test> <!-- All Tests -->
-  </suite> <!-- E-Commerce Test Automation Suite -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:12 CST" name="setUp" finished-at="2026-02-23T18:15:13 CST" duration-ms="874" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:13 CST" name="navigateToHome" finished-at="2026-02-23T18:15:16 CST" duration-ms="2983" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testHomePomDisplaysProducts()[pri:3, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:16 CST" name="testHomePomDisplaysProducts" finished-at="2026-02-23T18:15:16 CST" duration-ms="294" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHomePomDisplaysProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:16 CST" name="tearDown" finished-at="2026-02-23T18:15:16 CST" duration-ms="263" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:16 CST" name="setUp" finished-at="2026-02-23T18:15:17 CST" duration-ms="823" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:17 CST" name="navigateToHome" finished-at="2026-02-23T18:15:19 CST" duration-ms="2241" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testPhonesCategoryIsClickable()[pri:10, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:19 CST" name="testPhonesCategoryIsClickable" finished-at="2026-02-23T18:15:21 CST" duration-ms="1932" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPhonesCategoryIsClickable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:21 CST" name="tearDown" finished-at="2026-02-23T18:15:21 CST" duration-ms="319" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:22 CST" name="setUp" finished-at="2026-02-23T18:15:22 CST" duration-ms="871" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:22 CST" name="navigateToHome" finished-at="2026-02-23T18:15:25 CST" duration-ms="2210" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testPhonesCategoryDisplaysProducts()[pri:11, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:25 CST" name="testPhonesCategoryDisplaysProducts" finished-at="2026-02-23T18:15:27 CST" duration-ms="1943" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPhonesCategoryDisplaysProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:27 CST" name="tearDown" finished-at="2026-02-23T18:15:27 CST" duration-ms="434" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:27 CST" name="setUp" finished-at="2026-02-23T18:15:28 CST" duration-ms="883" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:28 CST" name="navigateToHome" finished-at="2026-02-23T18:15:30 CST" duration-ms="2419" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testSpecificPhoneIsDisplayed()[pri:12, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:30 CST" name="testSpecificPhoneIsDisplayed" finished-at="2026-02-23T18:15:32 CST" duration-ms="2018" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSpecificPhoneIsDisplayed -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:32 CST" name="tearDown" finished-at="2026-02-23T18:15:33 CST" duration-ms="322" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:33 CST" name="setUp" finished-at="2026-02-23T18:15:33 CST" duration-ms="836" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:33 CST" name="navigateToHome" finished-at="2026-02-23T18:15:36 CST" duration-ms="2366" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testLaptopsCategoryIsClickable()[pri:20, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:36 CST" name="testLaptopsCategoryIsClickable" finished-at="2026-02-23T18:15:38 CST" duration-ms="1998" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLaptopsCategoryIsClickable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:38 CST" name="tearDown" finished-at="2026-02-23T18:15:38 CST" duration-ms="354" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:38 CST" name="setUp" finished-at="2026-02-23T18:15:39 CST" duration-ms="1058" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:39 CST" name="navigateToHome" finished-at="2026-02-23T18:15:42 CST" duration-ms="2568" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testLaptopsCategoryDisplaysProducts()[pri:21, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:42 CST" name="testLaptopsCategoryDisplaysProducts" finished-at="2026-02-23T18:15:44 CST" duration-ms="2175" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLaptopsCategoryDisplaysProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:44 CST" name="tearDown" finished-at="2026-02-23T18:15:44 CST" duration-ms="395" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:44 CST" name="setUp" finished-at="2026-02-23T18:15:46 CST" duration-ms="1038" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:46 CST" name="navigateToHome" finished-at="2026-02-23T18:15:48 CST" duration-ms="2760" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testSpecificLaptopIsDisplayed()[pri:22, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:48 CST" name="testSpecificLaptopIsDisplayed" finished-at="2026-02-23T18:15:50 CST" duration-ms="2020" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSpecificLaptopIsDisplayed -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:50 CST" name="tearDown" finished-at="2026-02-23T18:15:51 CST" duration-ms="603" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:51 CST" name="setUp" finished-at="2026-02-23T18:15:52 CST" duration-ms="1008" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:52 CST" name="navigateToHome" finished-at="2026-02-23T18:15:54 CST" duration-ms="2297" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testMonitorsCategoryIsClickable()[pri:30, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:54 CST" name="testMonitorsCategoryIsClickable" finished-at="2026-02-23T18:15:56 CST" duration-ms="2034" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMonitorsCategoryIsClickable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:56 CST" name="tearDown" finished-at="2026-02-23T18:15:57 CST" duration-ms="338" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:57 CST" name="setUp" finished-at="2026-02-23T18:15:58 CST" duration-ms="941" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:15:58 CST" name="navigateToHome" finished-at="2026-02-23T18:16:01 CST" duration-ms="3260" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testMonitorsCategoryDisplaysProducts()[pri:31, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:01 CST" name="testMonitorsCategoryDisplaysProducts" finished-at="2026-02-23T18:16:03 CST" duration-ms="1942" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMonitorsCategoryDisplaysProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:03 CST" name="tearDown" finished-at="2026-02-23T18:16:03 CST" duration-ms="354" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:03 CST" name="setUp" finished-at="2026-02-23T18:16:04 CST" duration-ms="1018" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:04 CST" name="navigateToHome" finished-at="2026-02-23T18:16:08 CST" duration-ms="3444" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testSpecificMonitorIsDisplayed()[pri:32, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:08 CST" name="testSpecificMonitorIsDisplayed" finished-at="2026-02-23T18:16:10 CST" duration-ms="2132" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSpecificMonitorIsDisplayed -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:10 CST" name="tearDown" finished-at="2026-02-23T18:16:10 CST" duration-ms="467" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:10 CST" name="setUp" finished-at="2026-02-23T18:16:11 CST" duration-ms="953" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:11 CST" name="navigateToHome" finished-at="2026-02-23T18:16:13 CST" duration-ms="2171" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testProductClickNavigatesToDetail()[pri:40, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:13 CST" name="testProductClickNavigatesToDetail" finished-at="2026-02-23T18:16:16 CST" duration-ms="2926" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductClickNavigatesToDetail -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:16 CST" name="tearDown" finished-at="2026-02-23T18:16:17 CST" duration-ms="315" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:17 CST" name="setUp" finished-at="2026-02-23T18:16:18 CST" duration-ms="929" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:18 CST" name="navigateToHome" finished-at="2026-02-23T18:16:20 CST" duration-ms="2599" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testProductDetailPageHasContent()[pri:41, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:20 CST" name="testProductDetailPageHasContent" finished-at="2026-02-23T18:16:23 CST" duration-ms="2501" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductDetailPageHasContent -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:23 CST" name="tearDown" finished-at="2026-02-23T18:16:23 CST" duration-ms="368" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:23 CST" name="setUp" finished-at="2026-02-23T18:16:24 CST" duration-ms="959" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:24 CST" name="navigateToHome" finished-at="2026-02-23T18:16:28 CST" duration-ms="3878" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testCarouselNextButtonWorks()[pri:50, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:28 CST" name="testCarouselNextButtonWorks" finished-at="2026-02-23T18:16:30 CST" duration-ms="2051" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCarouselNextButtonWorks -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:30 CST" name="tearDown" finished-at="2026-02-23T18:16:30 CST" duration-ms="309" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:30 CST" name="setUp" finished-at="2026-02-23T18:16:31 CST" duration-ms="959" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:31 CST" name="navigateToHome" finished-at="2026-02-23T18:16:34 CST" duration-ms="2280" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testCarouselPreviousButtonWorks()[pri:51, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:34 CST" name="testCarouselPreviousButtonWorks" finished-at="2026-02-23T18:16:37 CST" duration-ms="3894" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCarouselPreviousButtonWorks -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:37 CST" name="tearDown" finished-at="2026-02-23T18:16:38 CST" duration-ms="309" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:38 CST" name="setUp" finished-at="2026-02-23T18:16:39 CST" duration-ms="876" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:39 CST" name="navigateToHome" finished-at="2026-02-23T18:16:41 CST" duration-ms="2230" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testGenericCategoryMethod(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:41 CST" name="testGenericCategoryMethod" data-provider="categoryProvider" finished-at="2026-02-23T18:16:43 CST" duration-ms="2014" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Phones]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGenericCategoryMethod -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:43 CST" name="tearDown" finished-at="2026-02-23T18:16:43 CST" duration-ms="367" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:43 CST" name="setUp" finished-at="2026-02-23T18:16:45 CST" duration-ms="1296" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:45 CST" name="navigateToHome" finished-at="2026-02-23T18:16:47 CST" duration-ms="2267" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testGenericCategoryMethod(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:47 CST" name="testGenericCategoryMethod" data-provider="categoryProvider" finished-at="2026-02-23T18:16:49 CST" duration-ms="1949" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Laptops]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGenericCategoryMethod -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:49 CST" name="tearDown" finished-at="2026-02-23T18:16:49 CST" duration-ms="314" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:49 CST" name="setUp" finished-at="2026-02-23T18:16:50 CST" duration-ms="987" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:50 CST" name="navigateToHome" finished-at="2026-02-23T18:16:53 CST" duration-ms="3308" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testGenericCategoryMethod(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:54 CST" name="testGenericCategoryMethod" data-provider="categoryProvider" finished-at="2026-02-23T18:16:56 CST" duration-ms="2086" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Monitors]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGenericCategoryMethod -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:56 CST" name="tearDown" finished-at="2026-02-23T18:16:56 CST" duration-ms="336" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:56 CST" name="setUp" finished-at="2026-02-23T18:16:57 CST" duration-ms="964" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:16:57 CST" name="navigateToHome" finished-at="2026-02-23T18:17:00 CST" duration-ms="2804" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testGenericCategoryMethodDataDriven(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:00 CST" name="testGenericCategoryMethodDataDriven" data-provider="categoryProvider" finished-at="2026-02-23T18:17:02 CST" duration-ms="2023" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Phones]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGenericCategoryMethodDataDriven -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:02 CST" name="tearDown" finished-at="2026-02-23T18:17:02 CST" duration-ms="355" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:02 CST" name="setUp" finished-at="2026-02-23T18:17:03 CST" duration-ms="1230" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:03 CST" name="navigateToHome" finished-at="2026-02-23T18:17:06 CST" duration-ms="2237" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testGenericCategoryMethodDataDriven(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:06 CST" name="testGenericCategoryMethodDataDriven" data-provider="categoryProvider" finished-at="2026-02-23T18:17:08 CST" duration-ms="2031" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Laptops]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGenericCategoryMethodDataDriven -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:08 CST" name="tearDown" finished-at="2026-02-23T18:17:08 CST" duration-ms="289" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:08 CST" name="setUp" finished-at="2026-02-23T18:17:09 CST" duration-ms="1364" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:09 CST" name="navigateToHome" finished-at="2026-02-23T18:17:12 CST" duration-ms="2260" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testGenericCategoryMethodDataDriven(java.lang.String)[pri:60, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:12 CST" name="testGenericCategoryMethodDataDriven" data-provider="categoryProvider" finished-at="2026-02-23T18:17:14 CST" duration-ms="2060" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Monitors]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGenericCategoryMethodDataDriven -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:14 CST" name="tearDown" finished-at="2026-02-23T18:17:14 CST" duration-ms="332" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:14 CST" name="setUp" finished-at="2026-02-23T18:17:15 CST" duration-ms="1082" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:15 CST" name="navigateToHome" finished-at="2026-02-23T18:17:18 CST" duration-ms="3215" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testCategoryHasExpectedProducts(java.lang.String)[pri:61, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:18 CST" name="testCategoryHasExpectedProducts" data-provider="categoryProvider" finished-at="2026-02-23T18:17:20 CST" duration-ms="2003" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Phones]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCategoryHasExpectedProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:20 CST" name="tearDown" finished-at="2026-02-23T18:17:21 CST" duration-ms="286" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:21 CST" name="setUp" finished-at="2026-02-23T18:17:21 CST" duration-ms="816" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:21 CST" name="navigateToHome" finished-at="2026-02-23T18:17:24 CST" duration-ms="2203" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testCategoryHasExpectedProducts(java.lang.String)[pri:61, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:24 CST" name="testCategoryHasExpectedProducts" data-provider="categoryProvider" finished-at="2026-02-23T18:17:26 CST" duration-ms="2086" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Laptops]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCategoryHasExpectedProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:26 CST" name="tearDown" finished-at="2026-02-23T18:17:26 CST" duration-ms="386" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:26 CST" name="setUp" finished-at="2026-02-23T18:17:27 CST" duration-ms="883" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="navigateToHome()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:27 CST" name="navigateToHome" finished-at="2026-02-23T18:17:29 CST" duration-ms="2256" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToHome -->
+        <test-method signature="testCategoryHasExpectedProducts(java.lang.String)[pri:61, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:29 CST" name="testCategoryHasExpectedProducts" data-provider="categoryProvider" finished-at="2026-02-23T18:17:31 CST" duration-ms="1945" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Monitors]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCategoryHasExpectedProducts -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.raulescobar.tests.smoke.NavigationTest@2b48a640]" started-at="2026-02-23T18:17:31 CST" name="tearDown" finished-at="2026-02-23T18:17:32 CST" duration-ms="316" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.raulescobar.tests.smoke.NavigationTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
 </testng-results>

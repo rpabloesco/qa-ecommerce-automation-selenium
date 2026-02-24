@@ -24,6 +24,7 @@
         <log4j.version>2.23.1</log4j.version>
         <jackson.version>2.18.2</jackson.version>
         <poi.version>5.3.0</poi.version>
+        <Jackson.version>2.18.2</Jackson.version>
     </properties>
 
     <dependencies>
@@ -86,6 +87,13 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- Jackson for JSON parsing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${Jackson.version}</version>
         </dependency>
 
         <!-- Apache POI for Excel data-driven testing -->

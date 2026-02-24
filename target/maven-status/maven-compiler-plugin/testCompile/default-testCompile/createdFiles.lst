@@ -1,4 +1,5 @@
-com\raulescobar\tests\smoke\SimpleTest.class
+com\raulescobar\tests\smoke\NavigationTest.class
 com\raulescobar\tests\smoke\LoginTest.class
-com\raulescobar\listeners\AllureListener.class
 com\raulescobar\tests\base\BaseTest.class
+com\raulescobar\listeners\AllureListener.class
+com\raulescobar\tests\smoke\SignUpTest.class

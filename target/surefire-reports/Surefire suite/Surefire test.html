@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>TestNG:  Surefire test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Surefire test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>26/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Feb 23 18:14:52 CST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>159 seconds (159384 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testLaptopsCategoryIsClickable()'><b>testLaptopsCategoryIsClickable</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>1</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testPhonesCategoryIsClickable()'><b>testPhonesCategoryIsClickable</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>1</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testSpecificMonitorIsDisplayed()'><b>testSpecificMonitorIsDisplayed</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testCategoryHasExpectedProducts()'><b>testCategoryHasExpectedProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Laptops</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testGenericCategoryMethod()'><b>testGenericCategoryMethod</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Laptops</td>
+<td></td>
+<td>1</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testPageTitleIsCorrect()'><b>testPageTitleIsCorrect</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>0</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testGenericCategoryMethodDataDriven()'><b>testGenericCategoryMethodDataDriven</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Laptops</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testSpecificPhoneIsDisplayed()'><b>testSpecificPhoneIsDisplayed</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testHomePomLoads()'><b>testHomePomLoads</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>0</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testPhonesCategoryDisplaysProducts()'><b>testPhonesCategoryDisplaysProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>1</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testGenericCategoryMethod()'><b>testGenericCategoryMethod</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Monitors</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testCarouselPreviousButtonWorks()'><b>testCarouselPreviousButtonWorks</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>3</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testHomePageDisplaysMinimumProducts()'><b>testHomePageDisplaysMinimumProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>0</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testLaptopsCategoryDisplaysProducts()'><b>testLaptopsCategoryDisplaysProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testCategoryHasExpectedProducts()'><b>testCategoryHasExpectedProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Monitors</td>
+<td></td>
+<td>1</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testMonitorsCategoryIsClickable()'><b>testMonitorsCategoryIsClickable</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testGenericCategoryMethod()'><b>testGenericCategoryMethod</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Phones</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testProductClickNavigatesToDetail()'><b>testProductClickNavigatesToDetail</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testGenericCategoryMethodDataDriven()'><b>testGenericCategoryMethodDataDriven</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Monitors</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testGenericCategoryMethodDataDriven()'><b>testGenericCategoryMethodDataDriven</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Phones</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testMonitorsCategoryDisplaysProducts()'><b>testMonitorsCategoryDisplaysProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>1</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testProductDetailPageHasContent()'><b>testProductDetailPageHasContent</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testSpecificLaptopIsDisplayed()'><b>testSpecificLaptopIsDisplayed</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testHomePomDisplaysProducts()'><b>testHomePomDisplaysProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>0</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testCategoryHasExpectedProducts()'><b>testCategoryHasExpectedProducts</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest<br>Parameters: Phones</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+<tr>
+<td title='com.raulescobar.tests.smoke.NavigationTest.testCarouselNextButtonWorks()'><b>testCarouselNextButtonWorks</b><br>Test class: com.raulescobar.tests.smoke.NavigationTest</td>
+<td></td>
+<td>2</td>
+<td>com.raulescobar.tests.smoke.NavigationTest@2b48a640</td></tr>
+</table><p>
+</body>
+</html>

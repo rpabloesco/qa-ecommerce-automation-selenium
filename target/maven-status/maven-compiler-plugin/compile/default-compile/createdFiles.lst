@@ -1,4 +1,7 @@
+com\raulescobar\pages\HomePom.class
 com\raulescobar\driver\DriverFactory.class
+com\raulescobar\pages\SignUpPom.class
 com\raulescobar\config\ConfigReader.class
 com\raulescobar\core\BasePage.class
+com\raulescobar\utils\TestDataReader.class
 com\raulescobar\pages\LoginPom.class
