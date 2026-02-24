@@ -2,13 +2,17 @@ package com.raulescobar.tests.smoke;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import com.raulescobar.pages.HomePom;
 import com.raulescobar.tests.base.BaseTest;
+import com.raulescobar.utils.TestDataReader;
+
 import io.qameta.allure.*;
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 /**
  * Atomic Navigation Tests for DemoBlaze
@@ -18,7 +22,7 @@ import java.io.ByteArrayInputStream;
 @Feature("Category and Product Navigation")
 public class NavigationTest extends BaseTest {
     
-    private HomePom HomePom;
+    private HomePom homePom;
     private String baseUrl;
     
     /**
@@ -29,7 +33,7 @@ public class NavigationTest extends BaseTest {
     public void navigateToHome() {
         baseUrl = config.getEnv("baseUrl");
         driver.get(baseUrl);
-        HomePom = new HomePom(driver);
+        homePom = new HomePom(driver);
         
         // Wait for page to load
         try {
@@ -45,7 +49,7 @@ public class NavigationTest extends BaseTest {
     @Story("Home Page Load")
     public void testHomePomLoads() {
         // Verify home page loaded
-        Assert.assertTrue(HomePom.isHomePageLoaded(),
+        Assert.assertTrue(homePom.isHomePageLoaded(),
             "Home page should load with carousel and products");
         
         Allure.addAttachment("Home Page Loaded", 
@@ -58,7 +62,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify page title contains expected text")
     @Story("Page Title Validation")
     public void testPageTitleIsCorrect() {
-        String pageTitle = HomePom.getPageTitle();
+        String pageTitle = homePom.getPageTitle();
         
         Assert.assertTrue(pageTitle.contains("STORE") || pageTitle.contains("PRODUCT STORE"),
             "Page title should contain 'STORE'. Actual: " + pageTitle);
@@ -71,7 +75,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify minimum number of products are displayed on home page")
     @Story("Products Display Validation")
     public void testHomePomDisplaysProducts() {
-        int productCount = HomePom.getProductCount();
+        int productCount = homePom.getProductCount();
         
         Assert.assertTrue(productCount > 0,
             "Home page should display at least one product. Found: " + productCount);
@@ -90,7 +94,7 @@ public class NavigationTest extends BaseTest {
     @Story("Phones Category - Click Action")
     public void testPhonesCategoryIsClickable() {
         // Action: Click Phones category
-        HomePom.clickPhonesCategory();
+        homePom.clickPhonesCategory();
         
         // Wait for products to reload
         try {
@@ -113,7 +117,7 @@ public class NavigationTest extends BaseTest {
     @Story("Phones Category - Products Display")
     public void testPhonesCategoryDisplaysProducts() {
         // Action: Navigate to Phones
-        HomePom.clickPhonesCategory();
+        homePom.clickPhonesCategory();
         
         try {
             Thread.sleep(1500);
@@ -122,7 +126,7 @@ public class NavigationTest extends BaseTest {
         }
         
         // Validation: Products are displayed
-        int productCount = HomePom.getProductCount();
+        int productCount = homePom.getProductCount();
         
         Assert.assertTrue(productCount > 0,
             "Phones category should display at least one product. Found: " + productCount);
@@ -140,7 +144,7 @@ public class NavigationTest extends BaseTest {
     @Story("Phones Category - Product Visibility")
     public void testSpecificPhoneIsDisplayed() {
         // Action: Navigate to Phones
-        HomePom.clickPhonesCategory();
+        homePom.clickPhonesCategory();
         
         try {
             Thread.sleep(1500);
@@ -151,7 +155,7 @@ public class NavigationTest extends BaseTest {
         // Validation: Specific product is visible
         String productName = "Samsung galaxy s6";
         
-        Assert.assertTrue(HomePom.isProductDisplayed(productName),
+        Assert.assertTrue(homePom.isProductDisplayed(productName),
             productName + " should be displayed in Phones category");
         
         System.out.println(productName + " is visible");
@@ -168,7 +172,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify Laptops category button is clickable")
     @Story("Laptops Category - Click Action")
     public void testLaptopsCategoryIsClickable() {
-        HomePom.clickLaptopsCategory();
+        homePom.clickLaptopsCategory();
         
         try {
             Thread.sleep(1500);
@@ -188,7 +192,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify products are displayed after clicking Laptops category")
     @Story("Laptops Category - Products Display")
     public void testLaptopsCategoryDisplaysProducts() {
-        HomePom.clickLaptopsCategory();
+        homePom.clickLaptopsCategory();
         
         try {
             Thread.sleep(1500);
@@ -196,7 +200,7 @@ public class NavigationTest extends BaseTest {
             Thread.currentThread().interrupt();
         }
         
-        int productCount = HomePom.getProductCount();
+        int productCount = homePom.getProductCount();
         
         Assert.assertTrue(productCount > 0,
             "Laptops category should display at least one product. Found: " + productCount);
@@ -213,7 +217,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify specific laptop product is displayed in Laptops category")
     @Story("Laptops Category - Product Visibility")
     public void testSpecificLaptopIsDisplayed() {
-        HomePom.clickLaptopsCategory();
+        homePom.clickLaptopsCategory();
         
         try {
             Thread.sleep(1500);
@@ -223,7 +227,7 @@ public class NavigationTest extends BaseTest {
         
         String productName = "Sony vaio i5";
         
-        Assert.assertTrue(HomePom.isProductDisplayed(productName),
+        Assert.assertTrue(homePom.isProductDisplayed(productName),
             productName + " should be displayed in Laptops category");
         
         System.out.println(productName + " is visible");
@@ -240,7 +244,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify Monitors category button is clickable")
     @Story("Monitors Category - Click Action")
     public void testMonitorsCategoryIsClickable() {
-        HomePom.clickMonitorsCategory();
+        homePom.clickMonitorsCategory();
         
         try {
             Thread.sleep(1500);
@@ -260,7 +264,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify products are displayed after clicking Monitors category")
     @Story("Monitors Category - Products Display")
     public void testMonitorsCategoryDisplaysProducts() {
-        HomePom.clickMonitorsCategory();
+        homePom.clickMonitorsCategory();
         
         try {
             Thread.sleep(1500);
@@ -268,7 +272,7 @@ public class NavigationTest extends BaseTest {
             Thread.currentThread().interrupt();
         }
         
-        int productCount = HomePom.getProductCount();
+        int productCount = homePom.getProductCount();
         
         Assert.assertTrue(productCount > 0,
             "Monitors category should display at least one product. Found: " + productCount);
@@ -285,7 +289,7 @@ public class NavigationTest extends BaseTest {
     @Description("Verify specific monitor product is displayed in Monitors category")
     @Story("Monitors Category - Product Visibility")
     public void testSpecificMonitorIsDisplayed() {
-        HomePom.clickMonitorsCategory();
+        homePom.clickMonitorsCategory();
         
         try {
             Thread.sleep(1500);
@@ -295,7 +299,7 @@ public class NavigationTest extends BaseTest {
         
         String productName = "Apple monitor 24";
         
-        Assert.assertTrue(HomePom.isProductDisplayed(productName),
+        Assert.assertTrue(homePom.isProductDisplayed(productName),
             productName + " should be displayed in Monitors category");
         
         System.out.println(productName + " is visible");
@@ -313,9 +317,9 @@ public class NavigationTest extends BaseTest {
     @Story("Product Detail Navigation")
     public void testProductClickNavigatesToDetail() {
         String productName = "Samsung galaxy s6";
-        Assert.assertTrue(HomePom.isProductDisplayed(productName),productName + " should be visible before clicking");
+        Assert.assertTrue(homePom.isProductDisplayed(productName),productName + " should be visible before clicking");
 
-        HomePom.clickProductByName(productName);
+        homePom.clickProductByName(productName);
         
         try {
             Thread.sleep(2000);
@@ -342,7 +346,7 @@ public class NavigationTest extends BaseTest {
     @Story("Product Detail Content Validation")
     public void testProductDetailPageHasContent() {
         String productName = "Samsung galaxy s6";
-        HomePom.clickProductByName(productName);
+        homePom.clickProductByName(productName);
         
         try {
             Thread.sleep(2000);
@@ -367,7 +371,7 @@ public class NavigationTest extends BaseTest {
     @Story("Carousel - Next Button")
     public void testCarouselNextButtonWorks() {
         // Click next
-        HomePom.clickNextOnCarousel();
+        homePom.clickNextOnCarousel();
         
         try {
             Thread.sleep(1000);
@@ -386,7 +390,7 @@ public class NavigationTest extends BaseTest {
     @Story("Carousel - Previous Button")
     public void testCarouselPreviousButtonWorks() {
         // First go next
-        HomePom.clickNextOnCarousel();
+        homePom.clickNextOnCarousel();
         
         try {
             Thread.sleep(1000);
@@ -395,7 +399,7 @@ public class NavigationTest extends BaseTest {
         }
         
         // Then go previous
-        HomePom.clickPreviousOnCarousel();
+        homePom.clickPreviousOnCarousel();
         
         try {
             Thread.sleep(1000);
@@ -410,13 +414,17 @@ public class NavigationTest extends BaseTest {
                 .getScreenshotAs(OutputType.BYTES)));
     }
     
+    // ============================================
+    // GENERIC CATEGORY METHOD TEST
+    // ============================================
+    
     @Test(priority = 60, groups = {"regression", "categories"}, dataProvider = "categoryProvider")
     @Severity(SeverityLevel.NORMAL)
     @Description("Verify generic category navigation method works for all categories")
     @Story("Generic Category Method")
     public void testGenericCategoryMethod(String category) {
         // Use generic method
-        HomePom.clickCategory(category);
+        homePom.clickCategory(category);
         
         try {
             Thread.sleep(1500);
@@ -425,7 +433,7 @@ public class NavigationTest extends BaseTest {
         }
         
         // Verify products loaded
-        int productCount = HomePom.getProductCount();
+        int productCount = homePom.getProductCount();
         
         Assert.assertTrue(productCount > 0,
             category + " should display products using generic method");
@@ -436,16 +444,115 @@ public class NavigationTest extends BaseTest {
             new ByteArrayInputStream(((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES)));
     }
+     @Test(priority = 60, groups = {"regression", "categories"}, dataProvider = "categoryProvider")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify generic category navigation method works for all categories (data-driven)")
+    @Story("Generic Category Method - Data Driven")
+    public void testGenericCategoryMethodDataDriven(String category) {
+        // Use generic method
+        homePom.clickCategory(category);
+        
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        
+        // Get minimum expected from test data
+        int minimumExpected = TestDataReader.getMinimumProductCount(category);
+        int actualCount = homePom.getProductCount();
+        
+        Assert.assertTrue(actualCount >= minimumExpected,
+            category + " should display at least " + minimumExpected + " products. Found: " + actualCount);
+        
+        System.out.println("✅ " + category + ": Expected min " + minimumExpected + ", Found " + actualCount);
+        
+        Allure.addAttachment(category + " Category Validation", 
+            new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES)));
+    }
+    
+    @Test(priority = 61, groups = {"regression", "categories"}, dataProvider = "categoryProvider")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify expected products exist in each category")
+    @Story("Category Products Validation - Data Driven")
+    public void testCategoryHasExpectedProducts(String category) {
+        // Navigate to category
+        homePom.clickCategory(category);
+        
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        
+        // Get expected products from test data
+        List<String> expectedProducts = TestDataReader.getExpectedProductsForCategory(category);
+        
+        System.out.println("Validating products in " + category + ": " + expectedProducts);
+        
+        // Verify at least one expected product is displayed
+        boolean foundExpectedProduct = false;
+        
+        for (String productName : expectedProducts) {
+            if (homePom.isProductDisplayed(productName)) {
+                foundExpectedProduct = true;
+                System.out.println("✅ Found expected product: " + productName);
+                break;
+            }
+        }
+        
+        Assert.assertTrue(foundExpectedProduct,
+            "At least one expected product should be visible in " + category);
+        
+        Allure.addAttachment(category + " Expected Products Check", 
+            new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES)));
+    }
+    
+    @Test(priority = 3, groups = {"smoke", "validation"})
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Verify minimum number of products on home page (using external config)")
+    @Story("Products Display Validation - Data Driven")
+    public void testHomePageDisplaysMinimumProducts() {
+        // Get expected minimum from test data
+        int minimumExpected = TestDataReader.getHomePageMinProducts();
+        int actualCount = homePom.getProductCount();
+        
+        Assert.assertTrue(actualCount >= minimumExpected,
+            "Home page should display at least " + minimumExpected + " products. Found: " + actualCount);
+        
+        System.out.println("✅ Home page products: Expected min " + minimumExpected + ", Found " + actualCount);
+        
+        Allure.addAttachment("Products on Home Page", 
+            new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES)));
+    }
     
     /**
-     * Data provider for category tests
+     * Data provider for category tests - reads from external JSON
+     * This replaces hardcoded test data with externalized data
      */
-    @org.testng.annotations.DataProvider(name = "categoryProvider")
+    @DataProvider(name = "categoryProvider")
     public Object[][] categoryProvider() {
-        return new Object[][] {
-            {"Phones"},
-            {"Laptops"},
-            {"Monitors"}
-        };
+        return TestDataReader.getCategoriesForDataProvider();
+    }
+    
+    /**
+     * Data provider for product tests
+     */
+    @DataProvider(name = "phonesProductProvider")
+    public Object[][] phonesProductProvider() {
+        return TestDataReader.getProductsByCategoryForDataProvider("Phones");
+    }
+    
+    @DataProvider(name = "laptopsProductProvider")
+    public Object[][] laptopsProductProvider() {
+        return TestDataReader.getProductsByCategoryForDataProvider("Laptops");
+    }
+    
+    @DataProvider(name = "monitorsProductProvider")
+    public Object[][] monitorsProductProvider() {
+        return TestDataReader.getProductsByCategoryForDataProvider("Monitors");
     }
 }
