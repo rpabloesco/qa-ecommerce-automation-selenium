@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.raulescobar.tests.smoke.NavigationTest
+-------------------------------------------------------------------------------
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 160.0 s -- in com.raulescobar.tests.smoke.NavigationTest
