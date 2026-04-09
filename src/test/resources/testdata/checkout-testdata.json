@@ -1,0 +1,29 @@
+{
+  "validCustomer": {
+    "name": "John Doe",
+    "country": "United States",
+    "city": "New York",
+    "creditCard": "4111111111111111",
+    "month": "12",
+    "year": "2026"
+  },
+  "customers": [
+    {
+      "name": "Jane Smith",
+      "country": "Canada",
+      "city": "Toronto",
+      "creditCard": "5555555555554444",
+      "month": "06",
+      "year": "2027"
+    },
+    {
+      "name": "Bob Johnson",
+      "country": "UK",
+      "city": "London",
+      "creditCard": "378282246310005",
+      "month": "03",
+      "year": "2028"
+    }
+  ],
+  "expectedSuccessMessage": "Thank you for your purchase!"
+}
