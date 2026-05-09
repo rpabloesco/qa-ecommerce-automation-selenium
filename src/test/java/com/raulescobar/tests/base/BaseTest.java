@@ -15,27 +15,38 @@ public class BaseTest {
     public WebDriver driver;
     protected ConfigReader config;
 
-    @BeforeMethod
+    /**
+     * Setup executed before EACH test method
+     * Initializes ConfigReader and WebDriver
+     */
+    @BeforeMethod(alwaysRun = true)  // ← IMPORTANTE: alwaysRun = true
     public void setUp() {
         System.out.println("=== TEST SETUP STARTED ===");
         
-        // Initialize configuration
+        // CRITICAL: Initialize configuration FIRST
         config = new ConfigReader();
+        System.out.println("✅ ConfigReader initialized");
         
         // Initialize WebDriver using DriverFactory
         DriverFactory.initializeDriver(config);
         driver = DriverFactory.getDriver();
         
-        System.out.println("=== DRIVER INITIALIZED SUCCESSFULLY ===");
+        System.out.println("✅ WebDriver initialized");
+        System.out.println("=== TEST SETUP COMPLETED ===");
     }
 
-    @AfterMethod
+    /**
+     * Teardown executed after EACH test method
+     * Closes WebDriver
+     */
+    @AfterMethod(alwaysRun = true)  // ← IMPORTANTE: alwaysRun = true
     public void tearDown() {
         System.out.println("=== TEST TEARDOWN STARTED ===");
         
         // Quit driver using DriverFactory
         DriverFactory.quitDriver();
         
-        System.out.println("=== DRIVER CLOSED SUCCESSFULLY ===");
+        System.out.println("✅ WebDriver closed");
+        System.out.println("=== TEST TEARDOWN COMPLETED ===");
     }
 }
