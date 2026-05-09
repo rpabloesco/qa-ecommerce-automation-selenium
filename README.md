@@ -193,12 +193,7 @@ Las contribuciones son bienvenidas. Por favor:
 4. Push a la rama (`git push origin feature/MejoraPruebas`)
 5. Abre un Pull Request
 
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT.
-
+   
 ---
 
 ## 👤 Autor
