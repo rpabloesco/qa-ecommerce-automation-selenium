@@ -18,12 +18,39 @@
     },
     {
       "name": "Bob Johnson",
-      "country": "UK",
+      "country": "United Kingdom",
       "city": "London",
       "creditCard": "378282246310005",
       "month": "03",
       "year": "2028"
+    },
+    {
+      "name": "Maria Garcia",
+      "country": "Spain",
+      "city": "Madrid",
+      "creditCard": "6011111111111117",
+      "month": "09",
+      "year": "2027"
     }
   ],
-  "expectedSuccessMessage": "Thank you for your purchase!"
+  "productForCheckout": {
+    "name": "Samsung galaxy s6",
+    "category": "Phones",
+    "price": 360
+  },
+  "multipleProductsForCheckout": [
+    {
+      "name": "Samsung galaxy s6",
+      "price": 360
+    },
+    {
+      "name": "Nokia lumia 1520",
+      "price": 820
+    }
+  ],
+  "expectedMessages": {
+    "successTitle": "Thank you for your purchase!",
+    "orderPlaced": "Your order has been placed"
+  },
+  "expectedTotalMultiple": 1180
 }
