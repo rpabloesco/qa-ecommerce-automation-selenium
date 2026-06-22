@@ -2,7 +2,7 @@
 
 ### Automatización E2E con Java + Selenium WebDriver + TestNG (POM)
 
-[![Test Automation CI/CD](https://github.com/rpabloesco/qa-ecommerce-automation-selenium-java/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium-java/actions)
+[![🚀 Test Automation CI/CD](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml)
 [![Java](https://img.shields.io/badge/Java-17-orange?logo=oracle)](https://www.oracle.com/java/)
 [![Selenium](https://img.shields.io/badge/Selenium-4.18-green?logo=selenium)](https://www.selenium.dev/)
 [![TestNG](https://img.shields.io/badge/TestNG-7.9-red)](https://testng.org/)
