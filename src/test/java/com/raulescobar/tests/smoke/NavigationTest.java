@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import com.raulescobar.pages.HomePage;
+import com.raulescobar.pages.ProductDetailPage;
 import com.raulescobar.tests.base.BaseTest;
 import io.qameta.allure.*;
 import com.raulescobar.utils.TestDataReader;
@@ -250,10 +251,13 @@ public class NavigationTest extends BaseTest {
         String productName = "Samsung galaxy s6";
         homePage.clickProduct(productName);
 
-        String pageSource = driver.getPageSource();
+        ProductDetailPage productDetailPage = new ProductDetailPage(driver);
+        Assert.assertTrue(productDetailPage.isProductDetailPageLoaded(),
+            "Product detail page should fully load (name + add to cart visible)");
         Assert.assertTrue(
-            pageSource.contains(productName) || pageSource.contains("Product description"),
-            "Product detail page should display product information");
+            productDetailPage.getProductName().toLowerCase().contains(productName.toLowerCase()),
+            "Product name on page should contain: " + productName
+                + ". Actual: " + productDetailPage.getProductName());
     }
 
     // ============================================

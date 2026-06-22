@@ -119,8 +119,12 @@ public class CartPage extends BasePage {
 
     @Step("Delete all products from cart")
     public CartPage deleteAllProducts() {
-        while (!isCartEmpty()) {
-            deleteProductByIndex(0);
+        int count;
+        while ((count = getProductCount()) > 0) {
+            final int expectedAfterDelete = count - 1;
+            WebElement button = driver.findElement(By.cssSelector("#tbodyid tr td a"));
+            click(button);
+            wait.until(d -> d.findElements(By.cssSelector("#tbodyid tr")).size() == expectedAfterDelete);
         }
         return this;
     }

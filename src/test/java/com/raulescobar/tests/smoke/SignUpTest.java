@@ -82,9 +82,6 @@ public class SignUpTest extends BaseTest {
 
         signUpPage.signUp("", "");
 
-        Allure.addAttachment("Sign Up with Empty Fields",
-            new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
         String alertText = signUpPage.getAlertText();
         System.out.println("Alert message: " + alertText);
 

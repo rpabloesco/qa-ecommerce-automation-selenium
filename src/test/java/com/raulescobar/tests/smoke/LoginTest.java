@@ -50,9 +50,6 @@ public class LoginTest extends BaseTest {
 
         loginPage.loginWithAlertHandling("invalid_user_xyz", "wrong_password_123");
 
-        Allure.addAttachment("Failed Login - Before Alert",
-            new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
         String alertText = loginPage.getAlertText();
         System.out.println("Alert message: " + alertText);
 
