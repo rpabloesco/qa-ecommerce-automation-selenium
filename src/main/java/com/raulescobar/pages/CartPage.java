@@ -9,18 +9,10 @@ import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 import java.util.List;
 
-public class CartPom extends BasePage {
-
-    // ============================================
-    // LOCATORS - Navigation
-    // ============================================
+public class CartPage extends BasePage {
 
     @FindBy(id = "cartur")
     private WebElement cartLink;
-
-    // ============================================
-    // LOCATORS - Cart Content
-    // ============================================
 
     @FindBy(id = "tbodyid")
     private WebElement cartTableBody;
@@ -40,36 +32,23 @@ public class CartPom extends BasePage {
     @FindBy(id = "totalp")
     private WebElement totalPrice;
 
-    // ============================================
-    // LOCATORS - Actions
-    // ============================================
-
     @FindBy(css = "button.btn.btn-success")
     private WebElement placeOrderButton;
 
     @FindBy(id = "orderModal")
     private WebElement checkoutModal;
 
-    public CartPom(WebDriver driver) {
+    public CartPage(WebDriver driver) {
         super(driver);
     }
 
-    // ============================================
-    // NAVIGATION METHODS
-    // ============================================
-
     @Step("Navigate to cart page")
-    public CartPom goToCart() {
+    public CartPage goToCart() {
         click(cartLink);
         waitForPageLoad();
-        // Wait for cart total element — present even when cart is empty
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("totalp")));
         return this;
     }
-
-    // ============================================
-    // CART CONTENT METHODS
-    // ============================================
 
     @Step("Get product count in cart")
     public int getProductCount() {
@@ -87,9 +66,7 @@ public class CartPom extends BasePage {
 
     @Step("Get all product names in cart")
     public List<String> getProductNames() {
-        return productTitles.stream()
-            .map(this::getText)
-            .toList();
+        return productTitles.stream().map(this::getText).toList();
     }
 
     @Step("Verify product is in cart: {productName}")
@@ -117,12 +94,8 @@ public class CartPom extends BasePage {
         return 0;
     }
 
-    // ============================================
-    // PRODUCT MANAGEMENT METHODS
-    // ============================================
-
     @Step("Delete product from cart: {productName}")
-    public CartPom deleteProduct(String productName) {
+    public CartPage deleteProduct(String productName) {
         for (int i = 0; i < productTitles.size(); i++) {
             if (getText(productTitles.get(i)).equalsIgnoreCase(productName)) {
                 WebElement button = deleteButtons.get(i);
@@ -135,7 +108,7 @@ public class CartPom extends BasePage {
     }
 
     @Step("Delete product at index: {index}")
-    public CartPom deleteProductByIndex(int index) {
+    public CartPage deleteProductByIndex(int index) {
         if (index >= 0 && index < deleteButtons.size()) {
             WebElement button = deleteButtons.get(index);
             click(button);
@@ -145,16 +118,12 @@ public class CartPom extends BasePage {
     }
 
     @Step("Delete all products from cart")
-    public CartPom deleteAllProducts() {
+    public CartPage deleteAllProducts() {
         while (!isCartEmpty()) {
             deleteProductByIndex(0);
         }
         return this;
     }
-
-    // ============================================
-    // CHECKOUT METHODS
-    // ============================================
 
     @Step("Click Place Order button")
     public void clickPlaceOrder() {
@@ -166,10 +135,6 @@ public class CartPom extends BasePage {
     public boolean isPlaceOrderButtonVisible() {
         return isDisplayed(placeOrderButton);
     }
-
-    // ============================================
-    // VALIDATION METHODS
-    // ============================================
 
     @Step("Verify cart total calculation is correct")
     public boolean verifyCartTotalCalculation() {

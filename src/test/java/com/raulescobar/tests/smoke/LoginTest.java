@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.raulescobar.pages.LoginPom;
+import com.raulescobar.pages.LoginPage;
 import com.raulescobar.tests.base.BaseTest;
 import io.qameta.allure.*;
 import java.io.ByteArrayInputStream;
@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
     @Story("Login Exitoso")
     public void testSuccessfulLogin() {
         driver.get(config.getEnv("baseUrl"));
-        LoginPom loginPage = new LoginPom(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         Assert.assertTrue(loginPage.isLoginButtonVisible(),
             "Login button should be visible on home page");
@@ -27,12 +27,10 @@ public class LoginTest extends BaseTest {
         String username = config.getEnv("username");
         String password = config.getEnv("password");
 
-        // login() already waits for modal to close and welcome message to appear
         loginPage.login(username, password);
 
         Assert.assertTrue(loginPage.isLoggedIn(),
             "User should be logged in — welcome message and logout button should be visible");
-
         Assert.assertTrue(loginPage.verifyWelcomeMessage(username),
             "Welcome message should contain username: " + username);
 
@@ -48,9 +46,8 @@ public class LoginTest extends BaseTest {
     @Story("Login Fallido")
     public void testFailedLogin() {
         driver.get(config.getEnv("baseUrl"));
-        LoginPom loginPage = new LoginPom(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
-        // loginWithAlertHandling uses isAlertPresent() which already waits for alert
         loginPage.loginWithAlertHandling("invalid_user_xyz", "wrong_password_123");
 
         Allure.addAttachment("Failed Login - Before Alert",
@@ -80,12 +77,9 @@ public class LoginTest extends BaseTest {
     @Story("Logout")
     public void testLogout() {
         driver.get(config.getEnv("baseUrl"));
-        LoginPom loginPage = new LoginPom(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
-        String username = config.getEnv("username");
-        String password = config.getEnv("password");
-
-        loginPage.login(username, password);
+        loginPage.login(config.getEnv("username"), config.getEnv("password"));
 
         Assert.assertTrue(loginPage.isLoggedIn(),
             "User should be logged in before testing logout");
@@ -93,12 +87,10 @@ public class LoginTest extends BaseTest {
         Allure.addAttachment("Before Logout - Logged In State",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        // logout() already waits for welcomeMessage to disappear
         loginPage.logout();
 
         Assert.assertTrue(loginPage.isLoggedOut(),
             "User should be logged out — login button visible, logout button hidden");
-
         Assert.assertTrue(loginPage.isLoginButtonVisible(),
             "Login button should be visible after logout");
 
@@ -112,13 +104,12 @@ public class LoginTest extends BaseTest {
     @Story("Page Load Validation")
     public void testHomePageLoad() {
         driver.get(config.getEnv("baseUrl"));
-        LoginPom loginPage = new LoginPom(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         String title = driver.getTitle();
         Assert.assertTrue(title.contains("STORE") || title.contains("PRODUCT STORE"),
             "Page title should contain 'STORE'. Actual: " + title);
 
-        // isLoginButtonVisible() uses waitForVisibility internally — no sleep needed
         Assert.assertTrue(loginPage.isLoginButtonVisible(),
             "Login button should be visible on page load");
 

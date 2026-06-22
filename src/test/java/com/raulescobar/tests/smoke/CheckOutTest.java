@@ -2,14 +2,14 @@ package com.raulescobar.tests.smoke;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.raulescobar.pages.HomePom;
-import com.raulescobar.pages.ProductDetailPom;
-import com.raulescobar.pages.CartPom;
-import com.raulescobar.pages.CheckOutPom;
+import com.raulescobar.pages.CartPage;
+import com.raulescobar.pages.CheckoutPage;
+import com.raulescobar.pages.HomePage;
+import com.raulescobar.pages.ProductDetailPage;
 import com.raulescobar.tests.base.BaseTest;
 import com.raulescobar.utils.TestDataReader;
 import io.qameta.allure.*;
@@ -20,28 +20,25 @@ import com.fasterxml.jackson.databind.JsonNode;
 @Feature("Order Placement and Payment")
 public class CheckOutTest extends BaseTest {
 
-    private HomePom homePage;
-    private ProductDetailPom productDetailPage;
-    private CartPom cartPage;
-    private CheckOutPom checkoutPage;
+    private HomePage homePage;
+    private ProductDetailPage productDetailPage;
+    private CartPage cartPage;
+    private CheckoutPage checkoutPage;
     private String baseUrl;
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToHome() {
         baseUrl = config.getEnv("baseUrl");
         driver.get(baseUrl);
+        clearCart();
 
-        homePage = new HomePom(driver);
-        productDetailPage = new ProductDetailPom(driver);
-        cartPage = new CartPom(driver);
-        checkoutPage = new CheckOutPom(driver);
+        homePage = new HomePage(driver);
+        productDetailPage = new ProductDetailPage(driver);
+        cartPage = new CartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
 
         homePage.waitForHomePageToLoad();
     }
-
-    // ============================================
-    // COMPLETE CHECKOUT TESTS
-    // ============================================
 
     @Test(priority = 1, groups = {"smoke", "checkout"})
     @Severity(SeverityLevel.BLOCKER)
@@ -52,18 +49,15 @@ public class CheckOutTest extends BaseTest {
         JsonNode customer = testData.get("validCustomer");
         JsonNode product = testData.get("productForCheckout");
         String expectedSuccess = testData.get("expectedMessages").get("successTitle").asText();
-
         String productName = product.get("name").asText();
 
         homePage.clickProduct(productName);
         productDetailPage.addToCartAndAcceptAlert();
-
         cartPage.goToCart();
 
         Allure.addAttachment("Cart Before Checkout",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        // clickPlaceOrder() waits for the checkout modal to appear
         cartPage.clickPlaceOrder();
 
         Assert.assertTrue(checkoutPage.isCheckoutModalDisplayed(),
@@ -84,7 +78,6 @@ public class CheckOutTest extends BaseTest {
         Allure.addAttachment("Checkout Form Filled",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        // clickPurchase() waits for success modal to appear
         checkoutPage.clickPurchase();
 
         Assert.assertTrue(checkoutPage.isSuccessMessageDisplayed(),
@@ -111,7 +104,6 @@ public class CheckOutTest extends BaseTest {
     public void testCheckoutModalDisplaysTotalCorrectly() throws Exception {
         JsonNode testData = TestDataReader.readJsonFile("checkout-testdata.json");
         JsonNode product = testData.get("productForCheckout");
-
         String productName = product.get("name").asText();
         int expectedPrice = product.get("price").asInt();
 
@@ -120,7 +112,6 @@ public class CheckOutTest extends BaseTest {
         cartPage.goToCart();
 
         int cartTotal = cartPage.getCartTotal();
-
         cartPage.clickPlaceOrder();
 
         int modalTotal = checkoutPage.getTotalAsInt();
@@ -174,22 +165,19 @@ public class CheckOutTest extends BaseTest {
         int expectedTotal = testData.get("expectedTotalMultiple").asInt();
 
         for (JsonNode product : products) {
-            String productName = product.get("name").asText();
-
             driver.get(baseUrl);
             homePage.waitForHomePageToLoad();
-            homePage.clickProduct(productName);
+            homePage.clickProduct(product.get("name").asText());
             productDetailPage.addToCartAndAcceptAlert();
         }
 
         cartPage.goToCart();
 
-        int cartTotal = cartPage.getCartTotal();
+        Assert.assertEquals(cartPage.getCartTotal(), expectedTotal,
+            "Cart total should be " + expectedTotal);
 
         Allure.addAttachment("Cart with Multiple Products",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
-        Assert.assertEquals(cartTotal, expectedTotal, "Cart total should be " + expectedTotal);
 
         cartPage.clickPlaceOrder();
 
@@ -219,10 +207,6 @@ public class CheckOutTest extends BaseTest {
         checkoutPage.clickOkOnSuccessModal();
     }
 
-    // ============================================
-    // DATA-DRIVEN CHECKOUT TEST
-    // ============================================
-
     @Test(priority = 5, groups = {"regression", "checkout"}, dataProvider = "customerData")
     @Severity(SeverityLevel.NORMAL)
     @Description("Verify checkout works with different customer data (data-driven)")
@@ -249,10 +233,6 @@ public class CheckOutTest extends BaseTest {
 
         checkoutPage.clickOkOnSuccessModal();
     }
-
-    // ============================================
-    // DATA PROVIDER
-    // ============================================
 
     @DataProvider(name = "customerData")
     public Object[][] customerDataProvider() throws Exception {

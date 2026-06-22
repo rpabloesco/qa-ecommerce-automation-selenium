@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke Test Suite" parallel="false" verbose="1">
+
+    <parameter name="environment" value="dev"/>
+
+    <test name="Authentication Smoke Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.LoginTest"/>
+            <class name="com.raulescobar.tests.smoke.SignUpTest"/>
+        </classes>
+    </test>
+
+    <test name="Navigation Smoke Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.NavigationTest"/>
+        </classes>
+    </test>
+
+    <test name="Cart Smoke Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.CartTest"/>
+        </classes>
+    </test>
+
+    <test name="Checkout Smoke Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.CheckOutTest"/>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="com.raulescobar.listeners.AllureListener"/>
+        <listener class-name="com.raulescobar.listeners.ExtentReportListener"/>
+    </listeners>
+
+</suite>

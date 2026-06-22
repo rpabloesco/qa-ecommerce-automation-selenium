@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 
-public class LoginPom extends BasePage {
+public class LoginPage extends BasePage {
 
     @FindBy(id = "login2")
     private WebElement loginMenuLink;
@@ -30,31 +30,31 @@ public class LoginPom extends BasePage {
     @FindBy(xpath = "//div[@id='logInModal']//button[text()='Close']")
     private WebElement closeModalButton;
 
-    public LoginPom(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     @Step("Open login modal")
-    public LoginPom openLoginModal() {
+    public LoginPage openLoginModal() {
         click(loginMenuLink);
         waitForVisibility(usernameInput);
         return this;
     }
 
     @Step("Enter username: {username}")
-    public LoginPom enterUsername(String username) {
+    public LoginPage enterUsername(String username) {
         sendKeys(usernameInput, username);
         return this;
     }
 
     @Step("Enter password")
-    public LoginPom enterPassword(String password) {
+    public LoginPage enterPassword(String password) {
         sendKeys(passwordInput, password);
         return this;
     }
 
     @Step("Click login button")
-    public LoginPom clickLoginButton() {
+    public LoginPage clickLoginButton() {
         click(loginButton);
         return this;
     }
@@ -66,7 +66,6 @@ public class LoginPom extends BasePage {
         enterPassword(password);
         clickLoginButton();
         wait.until(ExpectedConditions.invisibilityOf(loginButton));
-        // Wait for welcome message to confirm login is complete
         wait.until(ExpectedConditions.visibilityOf(welcomeMessage));
     }
 
@@ -76,7 +75,6 @@ public class LoginPom extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
-        // isAlertPresent() already uses wait.until(alertIsPresent) with timeout
         if (isAlertPresent()) {
             return;
         }

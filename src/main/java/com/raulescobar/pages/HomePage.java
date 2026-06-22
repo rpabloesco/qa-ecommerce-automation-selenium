@@ -10,11 +10,7 @@ import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 import java.util.List;
 
-public class HomePom extends BasePage {
-
-    // ============================================
-    // LOCATORS - Navbar
-    // ============================================
+public class HomePage extends BasePage {
 
     @FindBy(linkText = "Home")
     private WebElement homeLink;
@@ -34,10 +30,6 @@ public class HomePom extends BasePage {
     @FindBy(id = "signin2")
     private WebElement signUpLink;
 
-    // ============================================
-    // LOCATORS - Carousel
-    // ============================================
-
     @FindBy(id = "carouselExampleIndicators")
     private WebElement carousel;
 
@@ -46,10 +38,6 @@ public class HomePom extends BasePage {
 
     @FindBy(className = "carousel-control-prev")
     private WebElement prevButton;
-
-    // ============================================
-    // LOCATORS - Categories
-    // ============================================
 
     @FindBy(linkText = "Phones")
     private WebElement phonesCategory;
@@ -60,10 +48,6 @@ public class HomePom extends BasePage {
     @FindBy(linkText = "Monitors")
     private WebElement monitorsCategory;
 
-    // ============================================
-    // LOCATORS - Products
-    // ============================================
-
     @FindBy(className = "card")
     private List<WebElement> productCards;
 
@@ -73,23 +57,15 @@ public class HomePom extends BasePage {
     @FindBy(css = "div.card-block h4 a")
     private List<WebElement> productTitles;
 
-    // ============================================
-    // LOCATORS - Footer Navigation
-    // ============================================
-
     @FindBy(id = "prev2")
     private WebElement footerPrevButton;
 
     @FindBy(id = "next2")
     private WebElement footerNextButton;
 
-    public HomePom(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
-
-    // ============================================
-    // PAGE LOAD
-    // ============================================
 
     @Step("Wait for home page to be interactive")
     public void waitForHomePageToLoad() {
@@ -97,48 +73,40 @@ public class HomePom extends BasePage {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("card")));
     }
 
-    // ============================================
-    // CAROUSEL METHODS
-    // ============================================
-
     @Step("Click Next on Carousel")
-    public HomePom clickNextOnCarousel() {
+    public HomePage clickNextOnCarousel() {
         click(nextButton);
         waitForCarouselTransition();
         return this;
     }
 
     @Step("Click Previous on Carousel")
-    public HomePom clickPreviousOnCarousel() {
+    public HomePage clickPreviousOnCarousel() {
         click(prevButton);
         waitForCarouselTransition();
         return this;
     }
 
-    // ============================================
-    // CATEGORY NAVIGATION METHODS
-    // ============================================
-
     @Step("Navigate to Phones Category")
-    public HomePom clickPhonesCategory() {
+    public HomePage clickPhonesCategory() {
         clickCategoryAndWait(phonesCategory);
         return this;
     }
 
     @Step("Navigate to Laptops Category")
-    public HomePom clickLaptopsCategory() {
+    public HomePage clickLaptopsCategory() {
         clickCategoryAndWait(laptopsCategory);
         return this;
     }
 
     @Step("Navigate to Monitors Category")
-    public HomePom clickMonitorsCategory() {
+    public HomePage clickMonitorsCategory() {
         clickCategoryAndWait(monitorsCategory);
         return this;
     }
 
     @Step("Click on Category: {categoryName}")
-    public HomePom clickCategory(String categoryName) {
+    public HomePage clickCategory(String categoryName) {
         switch (categoryName.toLowerCase()) {
             case "phones":   return clickPhonesCategory();
             case "laptops":  return clickLaptopsCategory();
@@ -148,10 +116,6 @@ public class HomePom extends BasePage {
                     "Invalid category: '" + categoryName + "'. Valid options: Phones, Laptops, Monitors");
         }
     }
-
-    // ============================================
-    // PRODUCT INTERACTION METHODS
-    // ============================================
 
     @Step("Click on Product: {productName}")
     public void clickProduct(String productName) {
@@ -178,12 +142,8 @@ public class HomePom extends BasePage {
         }
     }
 
-    // ============================================
-    // VALIDATION METHODS
-    // ============================================
-
     @Step("Verify home page is loaded")
-    public boolean isHomePomLoaded() {
+    public boolean isHomePageLoaded() {
         try {
             return isDisplayed(carousel) && productCards.size() > 0;
         } catch (Exception e) {
@@ -200,10 +160,6 @@ public class HomePom extends BasePage {
     public boolean isCategoryActive(String categoryName) {
         return isDisplayed(getCategoryElement(categoryName));
     }
-
-    // ============================================
-    // PRIVATE HELPERS
-    // ============================================
 
     /**
      * Captures a reference to an existing card before clicking the category so we can

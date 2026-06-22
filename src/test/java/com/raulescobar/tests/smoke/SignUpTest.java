@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.raulescobar.pages.SignUpPom;
+import com.raulescobar.pages.SignUpPage;
 import com.raulescobar.tests.base.BaseTest;
 import io.qameta.allure.*;
 import java.io.ByteArrayInputStream;
@@ -19,14 +19,13 @@ public class SignUpTest extends BaseTest {
     @Story("Sign Up Exitoso")
     public void testSuccessfulSignUp() {
         driver.get(config.getEnv("baseUrl"));
-        SignUpPom signUpPage = new SignUpPom(driver);
+        SignUpPage signUpPage = new SignUpPage(driver);
 
-        String password = config.getEnv("newUserPassword");
         String username = config.getEnv("newUserPrefix") + "_" + System.currentTimeMillis();
+        String password = config.getEnv("newUserPassword");
 
         System.out.println("Creating new user: " + username);
 
-        // signUp() clicks the button; alert wait is handled by BasePage.getAlertText()
         signUpPage.signUp(username, password);
 
         Allure.addAttachment("Sign Up Form Submitted",
@@ -52,14 +51,12 @@ public class SignUpTest extends BaseTest {
     @Story("Sign Up con Usuario Duplicado")
     public void testSignUpWithExistingUser() {
         driver.get(config.getEnv("baseUrl"));
-        SignUpPom signUpPage = new SignUpPom(driver);
+        SignUpPage signUpPage = new SignUpPage(driver);
 
         String existingUsername = config.getEnv("username");
-        String password = config.getEnv("password");
-
         System.out.println("Attempting to sign up with existing user: " + existingUsername);
 
-        signUpPage.signUp(existingUsername, password);
+        signUpPage.signUp(existingUsername, config.getEnv("password"));
 
         Allure.addAttachment("Sign Up with Duplicate User",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
@@ -79,7 +76,7 @@ public class SignUpTest extends BaseTest {
     @Story("Sign Up con Campos Vacíos")
     public void testSignUpWithEmptyFields() {
         driver.get(config.getEnv("baseUrl"));
-        SignUpPom signUpPage = new SignUpPom(driver);
+        SignUpPage signUpPage = new SignUpPage(driver);
 
         System.out.println("Attempting sign up with empty fields");
 

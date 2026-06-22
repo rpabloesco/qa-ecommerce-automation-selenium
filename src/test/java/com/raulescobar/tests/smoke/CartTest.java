@@ -5,9 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.raulescobar.pages.HomePom;
-import com.raulescobar.pages.ProductDetailPom;
-import com.raulescobar.pages.CartPom;
+import com.raulescobar.pages.CartPage;
+import com.raulescobar.pages.HomePage;
+import com.raulescobar.pages.ProductDetailPage;
 import com.raulescobar.tests.base.BaseTest;
 import com.raulescobar.utils.TestDataReader;
 import io.qameta.allure.*;
@@ -18,19 +18,20 @@ import com.fasterxml.jackson.databind.JsonNode;
 @Feature("Shopping Cart Functionality")
 public class CartTest extends BaseTest {
 
-    private HomePom homePage;
-    private ProductDetailPom productDetailPage;
-    private CartPom cartPage;
+    private HomePage homePage;
+    private ProductDetailPage productDetailPage;
+    private CartPage cartPage;
     private String baseUrl;
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToHome() {
         baseUrl = config.getEnv("baseUrl");
         driver.get(baseUrl);
+        clearCart();
 
-        homePage = new HomePom(driver);
-        productDetailPage = new ProductDetailPom(driver);
-        cartPage = new CartPom(driver);
+        homePage = new HomePage(driver);
+        productDetailPage = new ProductDetailPage(driver);
+        cartPage = new CartPage(driver);
 
         homePage.waitForHomePageToLoad();
     }
@@ -50,7 +51,6 @@ public class CartTest extends BaseTest {
 
         System.out.println("Adding product to cart: " + productName);
 
-        // clickProduct() waits for product detail page to load
         homePage.clickProduct(productName);
 
         Assert.assertTrue(productDetailPage.isProductDetailPageLoaded(),
@@ -59,7 +59,6 @@ public class CartTest extends BaseTest {
         Allure.addAttachment("Product Detail Page",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        // acceptAddToCartAlert() waits for alertIsPresent via BasePage.getAlertText()
         productDetailPage.clickAddToCart();
         String alertMessage = productDetailPage.acceptAddToCartAlert();
 
@@ -80,8 +79,6 @@ public class CartTest extends BaseTest {
 
         homePage.clickProduct(productName);
         productDetailPage.addToCartAndAcceptAlert();
-
-        // goToCart() waits for cart content to be visible
         cartPage.goToCart();
 
         Assert.assertTrue(cartPage.isCartPageLoaded(), "Should navigate to cart page");
@@ -96,7 +93,7 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(cartPage.getProductPrice(productName), expectedPrice,
             "Product price should be " + expectedPrice);
 
-        System.out.println("Product " + productName + " is in cart with correct price: $" + expectedPrice);
+        System.out.println("Product " + productName + " is in cart at $" + expectedPrice);
     }
 
     @Test(priority = 3, groups = {"regression", "cart", "add"})
@@ -116,7 +113,6 @@ public class CartTest extends BaseTest {
 
             driver.get(baseUrl);
             homePage.waitForHomePageToLoad();
-
             homePage.clickCategory(category);
             homePage.clickProduct(productName);
             productDetailPage.addToCartAndAcceptAlert();
@@ -131,9 +127,8 @@ public class CartTest extends BaseTest {
             "Cart should contain " + productCount + " products");
 
         for (JsonNode product : products) {
-            String productName = product.get("name").asText();
-            Assert.assertTrue(cartPage.isProductInCart(productName),
-                productName + " should be in cart");
+            Assert.assertTrue(cartPage.isProductInCart(product.get("name").asText()),
+                product.get("name").asText() + " should be in cart");
         }
 
         System.out.println("Successfully added " + productCount + " products to cart");
@@ -153,13 +148,10 @@ public class CartTest extends BaseTest {
         int expectedTotal = testData.get("expectedTotalForMultiple").asInt();
 
         for (JsonNode product : products) {
-            String productName = product.get("name").asText();
-            String category = product.get("category").asText();
-
             driver.get(baseUrl);
             homePage.waitForHomePageToLoad();
-            homePage.clickCategory(category);
-            homePage.clickProduct(productName);
+            homePage.clickCategory(product.get("category").asText());
+            homePage.clickProduct(product.get("name").asText());
             productDetailPage.addToCartAndAcceptAlert();
         }
 
@@ -173,7 +165,7 @@ public class CartTest extends BaseTest {
         Allure.addAttachment("Cart Total Calculation",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        System.out.println("Cart total calculation is correct: $" + expectedTotal);
+        System.out.println("Cart total is correct: $" + expectedTotal);
     }
 
     // ============================================
@@ -200,7 +192,6 @@ public class CartTest extends BaseTest {
         Allure.addAttachment("Before Deleting Product",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        // deleteProduct() waits for stalenessOf the delete button (DOM update confirmed)
         cartPage.deleteProduct(productName);
 
         Allure.addAttachment("After Deleting Product",
@@ -223,13 +214,10 @@ public class CartTest extends BaseTest {
         JsonNode products = testData.get("products");
 
         for (JsonNode product : products) {
-            String productName = product.get("name").asText();
-            String category = product.get("category").asText();
-
             driver.get(baseUrl);
             homePage.waitForHomePageToLoad();
-            homePage.clickCategory(category);
-            homePage.clickProduct(productName);
+            homePage.clickCategory(product.get("category").asText());
+            homePage.clickProduct(product.get("name").asText());
             productDetailPage.addToCartAndAcceptAlert();
         }
 
@@ -239,7 +227,6 @@ public class CartTest extends BaseTest {
         System.out.println("Initial products in cart: " + initialCount);
         Assert.assertTrue(initialCount > 0, "Cart should have products before deletion");
 
-        // deleteAllProducts() loops calling deleteProductByIndex() which waits for staleness each time
         cartPage.deleteAllProducts();
 
         Allure.addAttachment("Empty Cart",
@@ -272,7 +259,6 @@ public class CartTest extends BaseTest {
 
         driver.get(baseUrl);
         homePage.waitForHomePageToLoad();
-
         cartPage.goToCart();
 
         Allure.addAttachment("Cart After Navigation",

@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.raulescobar.pages.HomePom;
+import com.raulescobar.pages.HomePage;
 import com.raulescobar.tests.base.BaseTest;
 import io.qameta.allure.*;
 import com.raulescobar.utils.TestDataReader;
@@ -17,27 +17,23 @@ import java.util.List;
 @Feature("Category and Product Navigation")
 public class NavigationTest extends BaseTest {
 
-    private HomePom homePage;
+    private HomePage homePage;
     private String baseUrl;
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToHome() {
         baseUrl = config.getEnv("baseUrl");
         driver.get(baseUrl);
-        homePage = new HomePom(driver);
+        homePage = new HomePage(driver);
         homePage.waitForHomePageToLoad();
     }
-
-    // ============================================
-    // HOME PAGE VALIDATION TESTS
-    // ============================================
 
     @Test(priority = 1, groups = {"smoke", "validation"})
     @Severity(SeverityLevel.BLOCKER)
     @Description("Verify home page loads successfully")
     @Story("Home Page Load")
     public void testHomePageLoads() {
-        Assert.assertTrue(homePage.isHomePomLoaded(),
+        Assert.assertTrue(homePage.isHomePageLoaded(),
             "Home page should load with carousel and products");
 
         Allure.addAttachment("Home Page Loaded",
@@ -79,9 +75,6 @@ public class NavigationTest extends BaseTest {
         Assert.assertTrue(actualCount >= minimumExpected,
             "Home page should display at least " + minimumExpected + " products. Found: " + actualCount);
         System.out.println("Home page products: Expected min " + minimumExpected + ", Found " + actualCount);
-
-        Allure.addAttachment("Products on Home Page",
-            new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     // ============================================
@@ -93,7 +86,6 @@ public class NavigationTest extends BaseTest {
     @Description("Verify Phones category button is clickable")
     @Story("Phones Category - Click Action")
     public void testPhonesCategoryIsClickable() {
-        // clickPhonesCategory() waits for products to reload before returning
         homePage.clickPhonesCategory();
         System.out.println("Phones category clicked successfully");
 
@@ -127,7 +119,6 @@ public class NavigationTest extends BaseTest {
         String productName = "Samsung galaxy s6";
         Assert.assertTrue(homePage.isProductDisplayed(productName),
             productName + " should be displayed in Phones category");
-        System.out.println(productName + " is visible");
 
         Allure.addAttachment("Samsung Galaxy S6 Visible",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
@@ -175,7 +166,6 @@ public class NavigationTest extends BaseTest {
         String productName = "Sony vaio i5";
         Assert.assertTrue(homePage.isProductDisplayed(productName),
             productName + " should be displayed in Laptops category");
-        System.out.println(productName + " is visible");
 
         Allure.addAttachment("Sony Vaio i5 Visible",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
@@ -223,14 +213,13 @@ public class NavigationTest extends BaseTest {
         String productName = "Apple monitor 24";
         Assert.assertTrue(homePage.isProductDisplayed(productName),
             productName + " should be displayed in Monitors category");
-        System.out.println(productName + " is visible");
 
         Allure.addAttachment("Apple Monitor 24 Visible",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     // ============================================
-    // PRODUCT DETAIL NAVIGATION TESTS
+    // PRODUCT DETAIL TESTS
     // ============================================
 
     @Test(priority = 40, groups = {"smoke", "products"})
@@ -243,13 +232,11 @@ public class NavigationTest extends BaseTest {
         Assert.assertTrue(homePage.isProductDisplayed(productName),
             productName + " should be visible before clicking");
 
-        // clickProduct() calls waitForPageLoad() before returning
         homePage.clickProduct(productName);
 
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("prod.html"),
             "URL should contain 'prod.html'. Actual: " + currentUrl);
-        System.out.println("Navigated to product detail page");
 
         Allure.addAttachment("Product Detail Page",
             new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
@@ -261,14 +248,12 @@ public class NavigationTest extends BaseTest {
     @Story("Product Detail Content Validation")
     public void testProductDetailPageHasContent() {
         String productName = "Samsung galaxy s6";
-
         homePage.clickProduct(productName);
 
         String pageSource = driver.getPageSource();
         Assert.assertTrue(
             pageSource.contains(productName) || pageSource.contains("Product description"),
             "Product detail page should display product information");
-        System.out.println("Product detail page has content");
     }
 
     // ============================================
@@ -280,7 +265,6 @@ public class NavigationTest extends BaseTest {
     @Description("Verify carousel next button is clickable")
     @Story("Carousel - Next Button")
     public void testCarouselNextButtonWorks() {
-        // clickNextOnCarousel() waits for Bootstrap transition to complete before returning
         homePage.clickNextOnCarousel();
         System.out.println("Carousel next button clicked");
 

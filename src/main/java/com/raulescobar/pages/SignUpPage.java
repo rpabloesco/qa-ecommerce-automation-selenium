@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 
-public class SignUpPom extends BasePage {
+public class SignUpPage extends BasePage {
 
     @FindBy(id = "signin2")
     private WebElement signUpMenuLink;
@@ -23,31 +23,31 @@ public class SignUpPom extends BasePage {
     @FindBy(xpath = "//div[@id='signInModal']//button[text()='Close']")
     private WebElement closeModalButton;
 
-    public SignUpPom(WebDriver driver) {
+    public SignUpPage(WebDriver driver) {
         super(driver);
     }
 
     @Step("Open signup modal")
-    public SignUpPom openSignUpModal() {
+    public SignUpPage openSignUpModal() {
         click(signUpMenuLink);
         waitForVisibility(usernameInput);
         return this;
     }
 
     @Step("Enter username: {username}")
-    public SignUpPom enterUsername(String username) {
+    public SignUpPage enterUsername(String username) {
         sendKeys(usernameInput, username);
         return this;
     }
 
     @Step("Enter password")
-    public SignUpPom enterPassword(String password) {
+    public SignUpPage enterPassword(String password) {
         sendKeys(passwordInput, password);
         return this;
     }
 
     @Step("Click signup button")
-    public SignUpPom clickSignUpButton() {
+    public SignUpPage clickSignUpButton() {
         click(signUpButton);
         return this;
     }
@@ -58,7 +58,6 @@ public class SignUpPom extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickSignUpButton();
-        // Alert is handled by BasePage.getAlertText() which already waits for alertIsPresent
     }
 
     @Step("Close signup modal")

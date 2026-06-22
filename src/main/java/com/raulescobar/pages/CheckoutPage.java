@@ -7,11 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 
-public class CheckOutPom extends BasePage {
-
-    // ============================================
-    // LOCATORS - Checkout Modal Form Fields
-    // ============================================
+public class CheckoutPage extends BasePage {
 
     @FindBy(id = "name")
     private WebElement nameField;
@@ -31,29 +27,17 @@ public class CheckOutPom extends BasePage {
     @FindBy(id = "year")
     private WebElement yearField;
 
-    // ============================================
-    // LOCATORS - Modal Information
-    // ============================================
-
     @FindBy(id = "totalm")
     private WebElement totalInModal;
 
     @FindBy(id = "orderModal")
     private WebElement checkoutModal;
 
-    // ============================================
-    // LOCATORS - Modal Actions
-    // ============================================
-
     @FindBy(css = "button[onclick='purchaseOrder()']")
     private WebElement purchaseButton;
 
     @FindBy(css = "#orderModal button.btn-secondary")
     private WebElement closeButton;
-
-    // ============================================
-    // LOCATORS - Success Modal
-    // ============================================
 
     @FindBy(css = ".sweet-alert h2")
     private WebElement successMessageTitle;
@@ -64,53 +48,49 @@ public class CheckOutPom extends BasePage {
     @FindBy(css = ".sweet-alert button.confirm")
     private WebElement okButton;
 
-    public CheckOutPom(WebDriver driver) {
+    public CheckoutPage(WebDriver driver) {
         super(driver);
     }
 
-    // ============================================
-    // FORM FILLING METHODS
-    // ============================================
-
     @Step("Enter name: {name}")
-    public CheckOutPom enterName(String name) {
+    public CheckoutPage enterName(String name) {
         sendKeys(nameField, name);
         return this;
     }
 
     @Step("Enter country: {country}")
-    public CheckOutPom enterCountry(String country) {
+    public CheckoutPage enterCountry(String country) {
         sendKeys(countryField, country);
         return this;
     }
 
     @Step("Enter city: {city}")
-    public CheckOutPom enterCity(String city) {
+    public CheckoutPage enterCity(String city) {
         sendKeys(cityField, city);
         return this;
     }
 
     @Step("Enter credit card: ****{cardNumber}")
-    public CheckOutPom enterCreditCard(String cardNumber) {
+    public CheckoutPage enterCreditCard(String cardNumber) {
         sendKeys(creditCardField, cardNumber);
         return this;
     }
 
     @Step("Enter month: {month}")
-    public CheckOutPom enterMonth(String month) {
+    public CheckoutPage enterMonth(String month) {
         sendKeys(monthField, month);
         return this;
     }
 
     @Step("Enter year: {year}")
-    public CheckOutPom enterYear(String year) {
+    public CheckoutPage enterYear(String year) {
         sendKeys(yearField, year);
         return this;
     }
 
     @Step("Fill checkout form for {name}")
-    public CheckOutPom fillCheckoutForm(String name, String country, String city,
-                                        String card, String month, String year) {
+    public CheckoutPage fillCheckoutForm(String name, String country, String city,
+                                         String card, String month, String year) {
         enterName(name);
         enterCountry(country);
         enterCity(city);
@@ -119,10 +99,6 @@ public class CheckOutPom extends BasePage {
         enterYear(year);
         return this;
     }
-
-    // ============================================
-    // MODAL INFORMATION METHODS
-    // ============================================
 
     @Step("Get total from checkout modal")
     public String getTotalInModal() {
@@ -144,26 +120,18 @@ public class CheckOutPom extends BasePage {
         }
     }
 
-    // ============================================
-    // PURCHASE ACTIONS
-    // ============================================
-
     @Step("Click Purchase button")
-    public CheckOutPom clickPurchase() {
+    public CheckoutPage clickPurchase() {
         click(purchaseButton);
         wait.until(ExpectedConditions.visibilityOf(successMessageTitle));
         return this;
     }
 
     @Step("Close checkout modal")
-    public CheckOutPom closeCheckoutModal() {
+    public CheckoutPage closeCheckoutModal() {
         click(closeButton);
         return this;
     }
-
-    // ============================================
-    // SUCCESS MODAL METHODS
-    // ============================================
 
     @Step("Get success message")
     public String getSuccessMessage() {
@@ -189,9 +157,7 @@ public class CheckOutPom extends BasePage {
     @Step("Extract order ID from success message")
     public String getOrderId() {
         for (String line : getSuccessMessageDetails().split("\n")) {
-            if (line.startsWith("Id:")) {
-                return line.replace("Id:", "").trim();
-            }
+            if (line.startsWith("Id:")) return line.replace("Id:", "").trim();
         }
         return "";
     }
@@ -199,24 +165,18 @@ public class CheckOutPom extends BasePage {
     @Step("Extract amount from success message")
     public String getAmountFromSuccessMessage() {
         for (String line : getSuccessMessageDetails().split("\n")) {
-            if (line.startsWith("Amount:")) {
-                return line.replace("Amount:", "").trim();
-            }
+            if (line.startsWith("Amount:")) return line.replace("Amount:", "").trim();
         }
         return "";
     }
 
     @Step("Click OK on success modal")
-    public CheckOutPom clickOkOnSuccessModal() {
+    public CheckoutPage clickOkOnSuccessModal() {
         wait.until(ExpectedConditions.elementToBeClickable(okButton));
         click(okButton);
         wait.until(ExpectedConditions.invisibilityOf(successMessageTitle));
         return this;
     }
-
-    // ============================================
-    // COMPLETE FLOW METHOD
-    // ============================================
 
     @Step("Complete checkout flow for {name}")
     public String completeCheckout(String name, String country, String city,

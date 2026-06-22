@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import com.raulescobar.core.BasePage;
 import io.qameta.allure.Step;
 
-public class ProductDetailPom extends BasePage {
+public class ProductDetailPage extends BasePage {
 
     @FindBy(css = "h2.name")
     private WebElement productName;
@@ -26,7 +26,7 @@ public class ProductDetailPom extends BasePage {
     @FindBy(linkText = "Home")
     private WebElement homeLink;
 
-    public ProductDetailPom(WebDriver driver) {
+    public ProductDetailPage(WebDriver driver) {
         super(driver);
     }
 
@@ -37,8 +37,7 @@ public class ProductDetailPom extends BasePage {
 
     @Step("Get product price")
     public String getProductPrice() {
-        String priceText = getText(productPrice);
-        return priceText.split("\\*")[0].trim();
+        return getText(productPrice).split("\\*")[0].trim();
     }
 
     @Step("Get product price as number")
@@ -61,14 +60,13 @@ public class ProductDetailPom extends BasePage {
     }
 
     @Step("Click Add to Cart button")
-    public ProductDetailPom clickAddToCart() {
+    public ProductDetailPage clickAddToCart() {
         click(addToCartButton);
         return this;
     }
 
     @Step("Accept 'Product added' alert")
     public String acceptAddToCartAlert() {
-        // getAlertText() in BasePage already waits for alertIsPresent — no sleep needed
         String alertText = getAlertText();
         acceptAlert();
         return alertText;

@@ -1,52 +1,34 @@
 package com.raulescobar.tests.base;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import com.raulescobar.config.ConfigReader;
 import com.raulescobar.driver.DriverFactory;
 
-/**
- * Base test class for all test classes
- * Handles WebDriver setup and teardown
- */
 public class BaseTest {
-    
+
     public WebDriver driver;
     protected ConfigReader config;
 
-    /**
-     * Setup executed before EACH test method
-     * Initializes ConfigReader and WebDriver
-     */
-    @BeforeMethod(alwaysRun = true)  // ← IMPORTANTE: alwaysRun = true
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        System.out.println("=== TEST SETUP STARTED ===");
-        
-        // CRITICAL: Initialize configuration FIRST
         config = new ConfigReader();
-        System.out.println("✅ ConfigReader initialized");
-        
-        // Initialize WebDriver using DriverFactory
         DriverFactory.initializeDriver(config);
         driver = DriverFactory.getDriver();
-        
-        System.out.println("✅ WebDriver initialized");
-        System.out.println("=== TEST SETUP COMPLETED ===");
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        DriverFactory.quitDriver();
     }
 
     /**
-     * Teardown executed after EACH test method
-     * Closes WebDriver
+     * Clears the DemoBlaze cart via localStorage so each test starts from a clean state.
+     * Must be called after driver.get(baseUrl) so the page's origin is set.
      */
-    @AfterMethod(alwaysRun = true)  // ← IMPORTANTE: alwaysRun = true
-    public void tearDown() {
-        System.out.println("=== TEST TEARDOWN STARTED ===");
-        
-        // Quit driver using DriverFactory
-        DriverFactory.quitDriver();
-        
-        System.out.println("✅ WebDriver closed");
-        System.out.println("=== TEST TEARDOWN COMPLETED ===");
+    protected void clearCart() {
+        ((JavascriptExecutor) driver).executeScript("localStorage.clear();");
     }
 }

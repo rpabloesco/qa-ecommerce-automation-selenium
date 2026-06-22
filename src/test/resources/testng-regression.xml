@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression Test Suite" parallel="false" verbose="1">
+
+    <parameter name="environment" value="dev"/>
+
+    <test name="Authentication Regression Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <include name="login"/>
+                <include name="signup"/>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.LoginTest"/>
+            <class name="com.raulescobar.tests.smoke.SignUpTest"/>
+        </classes>
+    </test>
+
+    <test name="Navigation Regression Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <include name="categories"/>
+                <include name="products"/>
+                <include name="carousel"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.NavigationTest"/>
+        </classes>
+    </test>
+
+    <test name="Cart Regression Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <include name="cart"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.CartTest"/>
+        </classes>
+    </test>
+
+    <test name="Checkout Regression Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <include name="checkout"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.raulescobar.tests.smoke.CheckOutTest"/>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="com.raulescobar.listeners.AllureListener"/>
+        <listener class-name="com.raulescobar.listeners.ExtentReportListener"/>
+    </listeners>
+
+</suite>
