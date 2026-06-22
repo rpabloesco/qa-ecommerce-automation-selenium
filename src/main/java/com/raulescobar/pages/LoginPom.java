@@ -9,7 +9,6 @@ import io.qameta.allure.Step;
 
 public class LoginPom extends BasePage {
 
-    // Navbar elements
     @FindBy(id = "login2")
     private WebElement loginMenuLink;
 
@@ -19,7 +18,6 @@ public class LoginPom extends BasePage {
     @FindBy(id = "nameofuser")
     private WebElement welcomeMessage;
 
-    // Login Modal elements
     @FindBy(id = "loginusername")
     private WebElement usernameInput;
 
@@ -67,13 +65,9 @@ public class LoginPom extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
-        
-        // Wait for modal to close (login successful)
-        try {
-            wait.until(ExpectedConditions.invisibilityOf(loginButton));
-        } catch (Exception e) {
-            // If modal doesn't close, there might be an alert
-        }
+        wait.until(ExpectedConditions.invisibilityOf(loginButton));
+        // Wait for welcome message to confirm login is complete
+        wait.until(ExpectedConditions.visibilityOf(welcomeMessage));
     }
 
     @Step("Login with credentials and handle alert")
@@ -82,20 +76,10 @@ public class LoginPom extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
-        
-        // Small wait for potential alert
-        try {
-            Thread.sleep(500);
-            // Check if there's an alert (wrong credentials)
-            if (isAlertPresent()) {
-                // Alert will be handled by test
-                return;
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        // isAlertPresent() already uses wait.until(alertIsPresent) with timeout
+        if (isAlertPresent()) {
+            return;
         }
-        
-        // Wait for successful login (modal closes)
         wait.until(ExpectedConditions.invisibilityOf(loginButton));
     }
 
@@ -115,14 +99,12 @@ public class LoginPom extends BasePage {
 
     @Step("Verify username in welcome message: {expectedUsername}")
     public boolean verifyWelcomeMessage(String expectedUsername) {
-        String welcomeText = getWelcomeMessage();
-        return welcomeText.contains(expectedUsername);
+        return getWelcomeMessage().contains(expectedUsername);
     }
 
     @Step("Click logout")
     public void logout() {
         click(logoutLink);
-        // Wait for logout to complete (welcome message disappears)
         wait.until(ExpectedConditions.invisibilityOf(welcomeMessage));
     }
 
@@ -141,9 +123,11 @@ public class LoginPom extends BasePage {
         wait.until(ExpectedConditions.invisibilityOf(usernameInput));
     }
 
-    /**
-     * Helper method to check if alert is present
-     */
+    @Step("Verify login button is visible in navbar")
+    public boolean isLoginButtonVisible() {
+        return isDisplayed(loginMenuLink);
+    }
+
     private boolean isAlertPresent() {
         try {
             wait.until(ExpectedConditions.alertIsPresent());
@@ -151,10 +135,5 @@ public class LoginPom extends BasePage {
         } catch (Exception e) {
             return false;
         }
-    }
-
-    @Step("Verify login button is visible in navbar")
-    public boolean isLoginButtonVisible() {
-        return isDisplayed(loginMenuLink);
     }
 }

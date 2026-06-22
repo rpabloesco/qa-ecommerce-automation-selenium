@@ -8,11 +8,9 @@ import io.qameta.allure.Step;
 
 public class SignUpPom extends BasePage {
 
-    // Navbar
     @FindBy(id = "signin2")
     private WebElement signUpMenuLink;
 
-    // SignUp Modal elements
     @FindBy(id = "sign-username")
     private WebElement usernameInput;
 
@@ -60,13 +58,7 @@ public class SignUpPom extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickSignUpButton();
-        
-        // Wait for alert (success or error)
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        // Alert is handled by BasePage.getAlertText() which already waits for alertIsPresent
     }
 
     @Step("Close signup modal")

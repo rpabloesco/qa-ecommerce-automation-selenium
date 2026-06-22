@@ -7,7 +7,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import java.time.Duration;
 
 public class DriverFactory {
 
@@ -38,7 +37,6 @@ public class DriverFactory {
                 throw new RuntimeException("El navegador '" + browser + "' no está soportado");
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(config.getInt("timeoutSeconds", 10)));
         driver.manage().window().maximize();
         DRIVER.set(driver);
     }
