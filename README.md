@@ -1,6 +1,6 @@
 # E-Commerce Automation Suite — DemoBlaze
 
-### Automatización E2E con Java 21 + Selenium WebDriver 4.40 + TestNG + Allure + ExtentReports
+### End-to-End Test Automation with Java 21 + Selenium WebDriver 4.40 + TestNG + Allure + ExtentReports
 
 [![CI/CD Pipeline](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml)
 [![Java](https://img.shields.io/badge/Java-21-orange?logo=oracle)](https://www.oracle.com/java/)
@@ -10,42 +10,42 @@
 
 ---
 
-## Descripción
+## Description
 
-Framework de automatización de pruebas E2E desarrollado para validar los flujos principales del sitio e-commerce **[DemoBlaze](https://www.demoblaze.com/)**.
+End-to-end test automation framework built to validate the main user flows of the **[DemoBlaze](https://www.demoblaze.com/)** e-commerce site.
 
-Diseñado como portfolio profesional de QA Automation, demuestra el uso de patrones y prácticas de nivel senior: Page Object Model, explicit waits, aislamiento de tests, data-driven testing y dual reporting.
-
----
-
-## Características principales
-
-- **Page Object Model (POM)** — Separación total entre lógica de UI y lógica de test
-- **Explicit Waits únicamente** — Sin `Thread.sleep()` ni implicit waits; todas las esperas son semánticas con `WebDriverWait` + `ExpectedConditions`
-- **Dual Reporting** — Allure Reports (interactivo) + ExtentReports (HTML standalone) generados automáticamente
-- **Data-Driven Testing** — Datos de test externalizados en JSON, leídos con Jackson ObjectMapper
-- **Aislamiento de tests** — `clearCart()` vía `localStorage.clear()` en `@BeforeMethod` garantiza estado limpio por test
-- **Suites separadas** — `testng-smoke.xml` y `testng-regression.xml` permiten ejecución por alcance
-- **CI/CD con GitHub Actions** — Pipeline automático en push, PR y schedule semanal
-- **WebDriverManager** — Sin configuración manual de drivers
+Designed as a professional QA Automation portfolio project, it demonstrates senior-level patterns and practices: Page Object Model, explicit waits, test isolation, data-driven testing, and dual reporting.
 
 ---
 
-## Alcance de Pruebas
+## Key Features
 
-| Módulo | Tests | Grupos |
+- **Page Object Model (POM)** — Clean separation between UI logic and test logic
+- **Explicit Waits only** — Zero `Thread.sleep()` or implicit waits; all synchronization uses `WebDriverWait` + `ExpectedConditions`
+- **Dual Reporting** — Allure Reports (interactive) + ExtentReports (standalone HTML) generated automatically
+- **Data-Driven Testing** — Test data externalized in JSON files, read with Jackson ObjectMapper
+- **Test Isolation** — `clearCart()` via `localStorage.clear()` in `@BeforeMethod` guarantees a clean state per test
+- **Separate Suites** — `testng-smoke.xml` and `testng-regression.xml` allow scope-based execution
+- **CI/CD with GitHub Actions** — Automated pipeline on push, PR, and weekly schedule
+- **WebDriverManager** — No manual driver configuration required
+
+---
+
+## Test Coverage
+
+| Module | Tests | Groups |
 |--------|-------|--------|
-| Login | Login exitoso, fallido, logout, carga de home | `smoke` `regression` `login` `negative` |
-| Sign Up | Registro exitoso, usuario duplicado, campos vacíos | `smoke` `signup` `negative` |
-| Navegación | Home load, categorías (Phones/Laptops/Monitors), carrusel, detalle de producto | `smoke` `regression` `categories` `carousel` `products` |
-| Carrito | Agregar producto, verificar en carrito, múltiples productos, total, eliminar, persistencia | `smoke` `regression` `cart` |
-| Checkout | Flujo completo, total en modal, data-driven por cliente, multi-producto | `smoke` `regression` `checkout` |
+| Login | Successful login, failed login, logout, home page load | `smoke` `regression` `login` `negative` |
+| Sign Up | Successful registration, duplicate user, empty fields | `smoke` `signup` `negative` |
+| Navigation | Home load, categories (Phones/Laptops/Monitors), carousel, product detail | `smoke` `regression` `categories` `carousel` `products` |
+| Cart | Add product, verify in cart, multiple products, total calculation, delete, persistence | `smoke` `regression` `cart` |
+| Checkout | Full flow, modal total, data-driven by customer, multi-product | `smoke` `regression` `checkout` |
 
-**Total: 45 tests automatizados** — 23 smoke / 45 regression
+**Total: 45 automated tests** — 23 smoke / 45 regression
 
 ---
 
-## Stack Tecnológico
+## Tech Stack
 
 ```
 Java 21
@@ -61,59 +61,59 @@ Java 21
 
 ---
 
-## Pre-requisitos
+## Prerequisites
 
-- Java JDK 21+ ([Descargar](https://adoptium.net/))
-- Maven 3.6+ ([Descargar](https://maven.apache.org/download.cgi))
-- Google Chrome (versión reciente)
+- Java JDK 21+ ([Download](https://adoptium.net/))
+- Maven 3.6+ ([Download](https://maven.apache.org/download.cgi))
+- Google Chrome (latest version)
 - Git
 
-### Verificar instalación
+### Verify installation
 
 ```bash
-java -version   # debe mostrar 21+
+java -version   # must show 21+
 mvn -version
 git --version
 ```
 
 ---
 
-## Instalación y Ejecución
+## Installation & Execution
 
-### Clonar repositorio
+### Clone the repository
 
 ```bash
 git clone https://github.com/rpabloesco/qa-ecommerce-automation-selenium.git
 cd qa-ecommerce-automation-selenium
 ```
 
-### Instalar dependencias
+### Install dependencies
 
 ```bash
 mvn clean install -DskipTests
 ```
 
-### Ejecutar suites
+### Run test suites
 
 ```bash
-# Suite completa (smoke + regression) — 45 tests
+# Full suite (smoke + regression) — 45 tests
 mvn test "-Dsurefire.suiteXmlFiles=src/test/resources/testng.xml"
 
-# Solo smoke — 23 tests (~2.5 min)
+# Smoke only — 23 tests (~2.5 min)
 mvn test "-Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml"
 
-# Suite de regression completa — 45 tests (~5 min)
+# Full regression suite — 45 tests (~5 min)
 mvn test "-Dsurefire.suiteXmlFiles=src/test/resources/testng-regression.xml"
 ```
 
-### Ver reportes
+### View reports
 
 ```bash
-# Allure Report (interactivo)
+# Allure Report (interactive)
 mvn allure:serve
 
-# ExtentReport (HTML generado automáticamente en test-output/)
-start test-output/ExtentReport_<fecha>.html
+# ExtentReport (auto-generated HTML in test-output/)
+start test-output/ExtentReport_<date>.html
 
 # Surefire Report
 start target/surefire-reports/index.html
@@ -121,24 +121,24 @@ start target/surefire-reports/index.html
 
 ---
 
-## Arquitectura del Proyecto
+## Project Architecture
 
 ```
 qa-ecommerce-automation-selenium/
 │
 ├── .github/workflows/
-│   └── ci.yml                          # Pipeline CI/CD
+│   └── ci.yml                          # CI/CD pipeline
 │
 ├── src/
 │   ├── main/java/com/raulescobar/
 │   │   ├── core/
-│   │   │   └── BasePage.java           # Clase base de POMs (waits, clicks, etc.)
+│   │   │   └── BasePage.java           # POM base class (waits, clicks, alerts)
 │   │   ├── driver/
-│   │   │   └── DriverFactory.java      # ThreadLocal<WebDriver> para ejecución segura
+│   │   │   └── DriverFactory.java      # ThreadLocal<WebDriver> for safe execution
 │   │   ├── config/
-│   │   │   └── ConfigReader.java       # Lectura de environments/*.properties
+│   │   │   └── ConfigReader.java       # Reads environments/*.properties
 │   │   ├── listeners/
-│   │   │   ├── AllureListener.java     # Screenshots en fallo → Allure
+│   │   │   ├── AllureListener.java     # Auto-screenshot on failure → Allure
 │   │   │   └── ExtentReportListener.java
 │   │   ├── pages/
 │   │   │   ├── HomePage.java
@@ -148,7 +148,7 @@ qa-ecommerce-automation-selenium/
 │   │   │   ├── CartPage.java
 │   │   │   └── CheckoutPage.java
 │   │   └── utils/
-│   │       ├── TestDataReader.java     # Helper para leer JSON con Jackson
+│   │       ├── TestDataReader.java     # JSON helper with Jackson
 │   │       └── WaitHelper.java
 │   │
 │   ├── test/java/com/raulescobar/
@@ -168,9 +168,9 @@ qa-ecommerce-automation-selenium/
 │   │       └── qa.properties
 │   │
 │   └── test/resources/
-│       ├── testng.xml                  # Suite completa
-│       ├── testng-smoke.xml            # Solo grupo smoke
-│       ├── testng-regression.xml       # Smoke + regression
+│       ├── testng.xml                  # Full suite
+│       ├── testng-smoke.xml            # Smoke group only
+│       ├── testng-regression.xml       # Smoke + regression groups
 │       └── testdata/
 │           ├── navigation-testdata.json
 │           ├── cart-testdata.json
@@ -185,37 +185,37 @@ qa-ecommerce-automation-selenium/
 
 ## CI/CD Pipeline
 
-El pipeline se ejecuta automáticamente en:
+The pipeline runs automatically on:
 
-- Cada push a `master` o `develop`
-- Pull Requests hacia `master`
-- Lunes a las 9:00 AM UTC (schedule semanal)
-- Ejecución manual (`workflow_dispatch`)
+- Every push to `master` or `develop`
+- Pull Requests targeting `master`
+- Every Monday at 9:00 AM UTC (weekly schedule)
+- Manual trigger (`workflow_dispatch`)
 
-**Ver historial:** [GitHub Actions](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions)
+**View history:** [GitHub Actions](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions)
 
-**Tiempo promedio de ejecución:** ~5 minutos (45 tests)
-
----
-
-## Patrones y Decisiones de Diseño
-
-| Patrón | Implementación |
-|--------|---------------|
-| **Page Object Model** | Una clase por página, hereda de `BasePage` con `PageFactory.initElements` |
-| **Explicit Waits** | `WebDriverWait` + `ExpectedConditions` en cada interacción; 0 `Thread.sleep()` |
-| **ThreadLocal Driver** | `DriverFactory` con `ThreadLocal<WebDriver>` — preparado para ejecución paralela |
-| **AJAX Detection** | `stalenessOf()` para detectar reemplazo de DOM en filtros de categoría |
-| **Test Isolation** | `localStorage.clear()` en `@BeforeMethod` de tests de carrito y checkout |
-| **Data-Driven** | `@DataProvider` + JSON files leídos con Jackson |
-| **Dual Reporting** | `AllureListener` + `ExtentReportListener` registrados en `testng.xml` |
+**Average execution time:** ~5 minutes (45 tests)
 
 ---
 
-## Autor
+## Design Patterns & Key Decisions
+
+| Pattern / Decision | Implementation |
+|--------------------|---------------|
+| **Page Object Model** | One class per page, extends `BasePage` with `PageFactory.initElements` |
+| **Explicit Waits** | `WebDriverWait` + `ExpectedConditions` on every interaction; zero `Thread.sleep()` |
+| **ThreadLocal Driver** | `DriverFactory` uses `ThreadLocal<WebDriver>` — ready for parallel execution |
+| **AJAX Detection** | `stalenessOf()` detects DOM replacement after category filter clicks |
+| **Test Isolation** | `localStorage.clear()` in `@BeforeMethod` for cart and checkout tests |
+| **Data-Driven** | `@DataProvider` + JSON files read with Jackson |
+| **Dual Reporting** | `AllureListener` + `ExtentReportListener` registered in `testng.xml` |
+
+---
+
+## Author
 
 **Pablo Escobar**
 
 - GitHub: [@rpabloesco](https://github.com/rpabloesco)
-- LinkedIn: [Tu LinkedIn]
+- LinkedIn: [https://www.linkedin.com/in/raul-pablo-escobar-montalvo-884269147/]
 - Email: rpablesmon@gmail.com
