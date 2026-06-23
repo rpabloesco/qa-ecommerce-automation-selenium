@@ -1,219 +1,221 @@
 # E-Commerce Automation Suite — DemoBlaze
 
-### Automatización E2E con Java + Selenium WebDriver + TestNG (POM)
+### Automatización E2E con Java 21 + Selenium WebDriver 4.40 + TestNG + Allure + ExtentReports
 
-[![🚀 Test Automation CI/CD](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml)
-[![Java](https://img.shields.io/badge/Java-17-orange?logo=oracle)](https://www.oracle.com/java/)
-[![Selenium](https://img.shields.io/badge/Selenium-4.18-green?logo=selenium)](https://www.selenium.dev/)
-[![TestNG](https://img.shields.io/badge/TestNG-7.9-red)](https://testng.org/)
+[![CI/CD Pipeline](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml/badge.svg)](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions/workflows/ci.yml)
+[![Java](https://img.shields.io/badge/Java-21-orange?logo=oracle)](https://www.oracle.com/java/)
+[![Selenium](https://img.shields.io/badge/Selenium-4.40-green?logo=selenium)](https://www.selenium.dev/)
+[![TestNG](https://img.shields.io/badge/TestNG-7.12-red)](https://testng.org/)
 [![Maven](https://img.shields.io/badge/Maven-3.9-blue?logo=apachemaven)](https://maven.apache.org/)
 
 ---
 
-## 🚀 Descripción
+## Descripción
 
 Framework de automatización de pruebas E2E desarrollado para validar los flujos principales del sitio e-commerce **[DemoBlaze](https://www.demoblaze.com/)**.
 
-### ✨ Características principales
-
--   **Arquitectura POM** (Page Object Model) - Código mantenible y escalable
--   **CI/CD Integrado** - Pipeline automatizado con GitHub Actions
--   **Cross-Browser Testing** - Soporte para Chrome, Firefox, Edge
--   **Ejecución Paralela** - Tests más rápidos
--   **Screenshots Automáticos** - Captura en fallos
--   **Reportes Detallados** - TestNG y Surefire reports
--   **WebDriverManager** - Sin configuración manual de drivers
+Diseñado como portfolio profesional de QA Automation, demuestra el uso de patrones y prácticas de nivel senior: Page Object Model, explicit waits, aislamiento de tests, data-driven testing y dual reporting.
 
 ---
 
-## 🧪 Alcance de Pruebas
+## Características principales
 
-| Módulo | Casos de Prueba | Estado |
-|--------|----------------|--------|
-| 🔐 Login | Login exitoso, fallido, logout |   Passing |
-| 🏪 Navegación | Categorías, detalles de productos |   Passing |
-| 🛒 Carrito | Agregar/eliminar, validaciones |   Passing |
-| 💳 Checkout | Flujo completo, confirmación |   Passing |
-
-**Total:** 15+ pruebas automatizadas
+- **Page Object Model (POM)** — Separación total entre lógica de UI y lógica de test
+- **Explicit Waits únicamente** — Sin `Thread.sleep()` ni implicit waits; todas las esperas son semánticas con `WebDriverWait` + `ExpectedConditions`
+- **Dual Reporting** — Allure Reports (interactivo) + ExtentReports (HTML standalone) generados automáticamente
+- **Data-Driven Testing** — Datos de test externalizados en JSON, leídos con Jackson ObjectMapper
+- **Aislamiento de tests** — `clearCart()` vía `localStorage.clear()` en `@BeforeMethod` garantiza estado limpio por test
+- **Suites separadas** — `testng-smoke.xml` y `testng-regression.xml` permiten ejecución por alcance
+- **CI/CD con GitHub Actions** — Pipeline automático en push, PR y schedule semanal
+- **WebDriverManager** — Sin configuración manual de drivers
 
 ---
 
-## 🛠️ Stack Tecnológico
-Java 17
-├── Selenium WebDriver 4.18
-├── TestNG 7.9
+## Alcance de Pruebas
+
+| Módulo | Tests | Grupos |
+|--------|-------|--------|
+| Login | Login exitoso, fallido, logout, carga de home | `smoke` `regression` `login` `negative` |
+| Sign Up | Registro exitoso, usuario duplicado, campos vacíos | `smoke` `signup` `negative` |
+| Navegación | Home load, categorías (Phones/Laptops/Monitors), carrusel, detalle de producto | `smoke` `regression` `categories` `carousel` `products` |
+| Carrito | Agregar producto, verificar en carrito, múltiples productos, total, eliminar, persistencia | `smoke` `regression` `cart` |
+| Checkout | Flujo completo, total en modal, data-driven por cliente, multi-producto | `smoke` `regression` `checkout` |
+
+**Total: 45 tests automatizados** — 23 smoke / 45 regression
+
+---
+
+## Stack Tecnológico
+
+```
+Java 21
+├── Selenium WebDriver 4.40.0
+├── TestNG 7.12.0
 ├── Maven 3.9
-├── WebDriverManager 5.6
-└── GitHub Actions
+├── WebDriverManager 5.9.2
+├── Allure TestNG 2.29.0
+├── ExtentReports 5.1.1
+├── Jackson Databind 2.18.2
+└── GitHub Actions CI/CD
+```
+
 ---
 
-## 📋 Pre-requisitos
+## Pre-requisitos
 
-- Java JDK 17+ ([Descargar](https://adoptium.net/))
+- Java JDK 21+ ([Descargar](https://adoptium.net/))
 - Maven 3.6+ ([Descargar](https://maven.apache.org/download.cgi))
+- Google Chrome (versión reciente)
 - Git
 
 ### Verificar instalación
+
 ```bash
-java -version
+java -version   # debe mostrar 21+
 mvn -version
 git --version
 ```
 
 ---
 
-## 🚀 Instalación y Ejecución
+## Instalación y Ejecución
 
 ### Clonar repositorio
+
 ```bash
-git clone https://github.com/rpabloesco/qa-ecommerce-automation-selenium-java.git
-cd qa-ecommerce-automation-selenium-java
+git clone https://github.com/rpabloesco/qa-ecommerce-automation-selenium.git
+cd qa-ecommerce-automation-selenium
 ```
 
 ### Instalar dependencias
+
 ```bash
 mvn clean install -DskipTests
 ```
 
-### Ejecutar tests
+### Ejecutar suites
+
 ```bash
-# Todos los tests
-mvn clean test
+# Suite completa (smoke + regression) — 45 tests
+mvn test "-Dsurefire.suiteXmlFiles=src/test/resources/testng.xml"
 
-# Browser específico
-mvn test -Dbrowser=chrome
+# Solo smoke — 23 tests (~2.5 min)
+mvn test "-Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml"
 
-# Modo headless
-mvn test -Dheadless=true
+# Suite de regression completa — 45 tests (~5 min)
+mvn test "-Dsurefire.suiteXmlFiles=src/test/resources/testng-regression.xml"
+```
 
-# Ejecución paralela
-mvn test -DthreadCount=3
+### Ver reportes
+
+```bash
+# Allure Report (interactivo)
+mvn allure:serve
+
+# ExtentReport (HTML generado automáticamente en test-output/)
+start test-output/ExtentReport_<fecha>.html
+
+# Surefire Report
+start target/surefire-reports/index.html
 ```
 
 ---
 
-## 📊 Reportes
+## Arquitectura del Proyecto
 
-### Ver reporte de TestNG
-```bash
-open target/surefire-reports/index.html
 ```
-
-### Ver reporte de Surefire
-```bash
-open target/site/surefire-report.html
-```
-
----
-
-## 📁 Arquitectura del Proyecto
-qa-ecommerce-automation-selenium-java/
+qa-ecommerce-automation-selenium/
 │
-├── .github/
-│   └── workflows/
-│       └── ci.yml                    # Pipeline CI/CD
+├── .github/workflows/
+│   └── ci.yml                          # Pipeline CI/CD
 │
 ├── src/
-│   ├── main/java/
-│   │   ├── pages/                    # Page Objects
-│   │   │   ├── BasePage.java
+│   ├── main/java/com/raulescobar/
+│   │   ├── core/
+│   │   │   └── BasePage.java           # Clase base de POMs (waits, clicks, etc.)
+│   │   ├── driver/
+│   │   │   └── DriverFactory.java      # ThreadLocal<WebDriver> para ejecución segura
+│   │   ├── config/
+│   │   │   └── ConfigReader.java       # Lectura de environments/*.properties
+│   │   ├── listeners/
+│   │   │   ├── AllureListener.java     # Screenshots en fallo → Allure
+│   │   │   └── ExtentReportListener.java
+│   │   ├── pages/
+│   │   │   ├── HomePage.java
 │   │   │   ├── LoginPage.java
-│   │   │   ├── HomePom.java
-│   │   │   ├── ProductPage.java
-│   │   │   └── CartPage.java
-│   │   │
-│   │   └── utils/                    # Utilidades
-│   │       ├── DriverFactory.java
-│   │       └── ConfigReader.java
+│   │   │   ├── SignUpPage.java
+│   │   │   ├── ProductDetailPage.java
+│   │   │   ├── CartPage.java
+│   │   │   └── CheckoutPage.java
+│   │   └── utils/
+│   │       ├── TestDataReader.java     # Helper para leer JSON con Jackson
+│   │       └── WaitHelper.java
 │   │
-│   └── test/java/
-│       └── tests/                    # Clases de Test
-│           ├── LoginTests.java
-│           ├── AddToCartTests.java
-│           └── CheckoutTests.java
+│   ├── test/java/com/raulescobar/
+│   │   └── tests/
+│   │       ├── base/
+│   │       │   └── BaseTest.java       # setUp/tearDown + clearCart()
+│   │       └── smoke/
+│   │           ├── LoginTest.java
+│   │           ├── SignUpTest.java
+│   │           ├── NavigationTest.java
+│   │           ├── CartTest.java
+│   │           └── CheckOutTest.java
+│   │
+│   ├── main/resources/
+│   │   └── environments/
+│   │       ├── dev.properties
+│   │       └── qa.properties
+│   │
+│   └── test/resources/
+│       ├── testng.xml                  # Suite completa
+│       ├── testng-smoke.xml            # Solo grupo smoke
+│       ├── testng-regression.xml       # Smoke + regression
+│       └── testdata/
+│           ├── navigation-testdata.json
+│           ├── cart-testdata.json
+│           └── checkout-testdata.json
 │
-├── target/                           # Build output
-├── pom.xml                          # Dependencias Maven
+├── pom.xml
 ├── .gitignore
 └── README.md
+```
+
 ---
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 El pipeline se ejecuta automáticamente en:
 
--   Cada push a `master`
--   Pull requests
--   Lunes a las 9 AM (ejecución programada)
--   Manual (workflow_dispatch)
+- Cada push a `master` o `develop`
+- Pull Requests hacia `master`
+- Lunes a las 9:00 AM UTC (schedule semanal)
+- Ejecución manual (`workflow_dispatch`)
 
-**Ver historial:** [GitHub Actions](https://github.com/rpabloesco/qa-ecommerce-automation-selenium-java/actions)
+**Ver historial:** [GitHub Actions](https://github.com/rpabloesco/qa-ecommerce-automation-selenium/actions)
 
-**Tiempo promedio de ejecución:** ~1 minuto
-
----
-
-## 🏗️ Patrones de Diseño
-
-- **Page Object Model (POM)** - Separación UI/Tests
-- **Factory Pattern** - Creación dinámica de WebDrivers
-- **Singleton** - Gestión de configuración
+**Tiempo promedio de ejecución:** ~5 minutos (45 tests)
 
 ---
 
-## 🎯 Objetivos del Proyecto
+## Patrones y Decisiones de Diseño
 
--   Automatizar flujos críticos de e-commerce
--   Implementar framework modular y escalable
--   Facilitar ejecución por suites con TestNG
--   Generar reportes automáticos
--   Integración con CI/CD para testing continuo
-
----
-
-## 📈 Mejoras Futuras
-
-- [ ] Integración con Allure Reports
-- [ ] Data-driven testing con Excel/JSON
-- [ ] Soporte multi-idioma
-- [ ] Tests de API
-- [ ] Performance testing
-- [ ] Docker containerization
+| Patrón | Implementación |
+|--------|---------------|
+| **Page Object Model** | Una clase por página, hereda de `BasePage` con `PageFactory.initElements` |
+| **Explicit Waits** | `WebDriverWait` + `ExpectedConditions` en cada interacción; 0 `Thread.sleep()` |
+| **ThreadLocal Driver** | `DriverFactory` con `ThreadLocal<WebDriver>` — preparado para ejecución paralela |
+| **AJAX Detection** | `stalenessOf()` para detectar reemplazo de DOM en filtros de categoría |
+| **Test Isolation** | `localStorage.clear()` en `@BeforeMethod` de tests de carrito y checkout |
+| **Data-Driven** | `@DataProvider` + JSON files leídos con Jackson |
+| **Dual Reporting** | `AllureListener` + `ExtentReportListener` registrados en `testng.xml` |
 
 ---
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama (`git checkout -b feature/MejoraPruebas`)
-3. Commit cambios (`git commit -m 'Add: nuevas pruebas de checkout'`)
-4. Push a la rama (`git push origin feature/MejoraPruebas`)
-5. Abre un Pull Request
-
-   
----
-
-## 👤 Autor
+## Autor
 
 **Pablo Escobar**
 
 - GitHub: [@rpabloesco](https://github.com/rpabloesco)
 - LinkedIn: [Tu LinkedIn]
-- Email: tu@email.com
-
----
-
-## ⭐ Soporte
-
-Si este proyecto te fue útil, considera darle una estrella ⭐
-
----
-
-<div align="center">
-
-**Desarrollado para la comunidad QA**
-
-</div>
+- Email: rpablesmon@gmail.com
